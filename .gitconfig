@@ -1,0 +1,73 @@
+[user]
+	name = Andrius Miasnikovas
+	email = andriusms@gmail.com
+[color]
+	ui = auto
+[alias]
+	fap = fetch --all --prune
+	pom = pull origin master
+	
+	#mr = "!sh -c 'git checkout -b merge-requests/$1; git pull origin refs/merge-requests/$1' -"
+
+	s = status --short --untracked-files
+	st = status
+	a = add
+	aa = add --all
+	c = commit
+	ca = !git add --all && git commit
+	amend = commit --amend
+	co = checkout
+	go = checkout -B
+	ps = push
+	fa = fetch --all
+	pl = pull
+	plr = pull --rebase
+	sub = submodule
+	subpull = submodule foreach git pull origin master
+	r = rebase
+	ri = rebase --interactive
+	rc = rebase --continue
+	rs = rebase --skip
+	di = diff
+	dc = diff --cached
+	ds = diff --stat=160,120
+	dh1 = diff HEAD~1
+	l = log --graph --abbrev-commit --date=relative
+	head = !git l -1
+	h = !git head
+	la = !git l --all
+	b = branch --verbose
+	re = remote --verbose
+	redo = reset --soft HEAD^
+	purge = !git reset --hard && git clean -fd
+	listconf = config --global --list
+	ctags = !.git/hooks/ctags
+	spull = svn rebase
+	spush = svn dcommit
+[format]
+	pretty = format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
+[core]
+	editor = vim
+	autocrlf = input
+	safecrlf = false
+	excludesfile = /Users/andrius/.global_git_ignore
+[diff]
+	guitool = kdiff3
+[difftool "winmerge"]
+	cmd = winmergeu $LOCAL $REMOTE
+[merge]
+	tool = kdiff3
+[credential]
+[apply]
+	whitespace = nowarn
+
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
