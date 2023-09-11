@@ -1,0 +1,82 @@
+snippet comp
+	<template>
+	  <div class="${1:component1}">
+	  </div>
+	</template>
+
+	<script>
+	export default {
+	  name: '${1:component1}',
+	  data () {
+		return {
+		  someVar: 'someValue'
+		}
+	  },
+	  methods: {
+		someMethod: function () {
+			  //
+		}
+	  },
+	}
+	</script>
+
+	<style scoped>
+	</style>
+
+snippet button
+	<md-button class="md-raised md-primary">${1}</md-button>
+
+snippet input
+	<md-input-container>
+	  <label>${1:Initial value}</label>
+	  <md-input ${2:v-model="initialValue"}></md-input>
+	</md-input-container>
+
+snippet text
+	<md-input-container>
+	  <label>${1:Textarea}</label>
+	  <md-textarea></md-textarea>
+	</md-input-container>
+
+snippet icon
+	<md-icon class="${1:md-size-2x} md-primary">${2:home}</md-icon>
+
+snippet card
+	<md-card>
+	  <md-card-media>
+		<img src="assets/image1.jpg">
+	  </md-card-media>
+
+	  <md-card-header>
+		<div class="md-title">Title goes here</div>
+		<div class="md-subhead">Subtitle here</div>
+	  </md-card-header>
+
+	  <md-card-actions>
+		<md-button>Action</md-button>
+	  </md-card-actions>
+
+	  <md-card-content>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+	  </md-card-content>
+	</md-card>
+
+snippet toolbar
+	<md-toolbar>
+		<md-button class="md-icon-button">
+			<md-icon>menu</md-icon>
+		</md-button>
+
+		<h2 class="md-title" style="flex: 1">${1:Some title}</h2>
+
+		<md-button class="md-icon-button">
+			<md-icon>favorite</md-icon>
+		</md-button>
+	</md-toolbar>
+
+snippet tabs
+	<md-tabs>
+		<md-tab id="${1:intro}" md-label="${2:Intro}">
+			<p>${3:Some text}</p>
+		</md-tab>
+	</md-tabs>

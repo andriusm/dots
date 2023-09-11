@@ -1,0 +1,33 @@
+snippet html
+	<!doctype html>
+	<html lang="en">
+	<head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width" />
+
+	  <title>Title</title>
+
+	  <link rel="stylesheet" href="css/styles.css?v=1.0">
+	</head>
+	<body>
+	${1}
+	</body>
+	</html>
+
+snippet a
+	<a href="${1:http://www.${2:url.com}}">${3:Anchor Text}</a>
+
+snippet div
+	<div>${1}</div>
+
+snippet h1
+	<h1>${1}</h1>
+
+snippet h2
+	<h2>${1}</h2>
+
+snippet img "<img>"
+	<img src="$1" alt="$2">
+
+snippet	script
+	<script src="${1:js/script.js}"></script>

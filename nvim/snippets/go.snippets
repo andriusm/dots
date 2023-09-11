@@ -1,0 +1,129 @@
+snippet rfile
+	raw, err := ioutil.ReadFile("${1:file.txt}")
+	if err != nil {
+		panic(err)
+	}
+	data := string(raw)
+	fmt.Println(data)
+
+snippet fscan
+	file, err := os.Open("${1:file.txt}")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	scanner.Split(bufio.ScanLines)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+		fmt.Println(line)
+		$0
+	}
+
+snippet errp
+	if err != nil {
+		panic(err)
+	}
+
+snippet authreq
+	client := &http.Client{}
+
+	req, err := http.NewRequest("${1:GET}", "${2:http://www.google.com}", nil)
+	if err != nil {
+		panic(err)
+	}
+
+	req.SetBasicAuth("${3:user}", "${4:pwd}")
+	resp, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+
+snippet rdall
+	data, err := ioutil.ReadAll(${1:reader})
+	if err != nil {
+		panic(err)
+	}
+
+snippet b64dec
+	result, err := base64.StdEncoding.DecodeString("${1:YRWcnuROgmg=}")
+	if err != nil {
+		panic(err)
+	}
+
+snippet b64enc
+	result := base64.StdEncoding.EncodeToString([]byte("${1:test}"))
+
+snippet htoken
+	tokenizer := html.NewTokenizer(resp.Body)
+	for {
+		tt := tokenizer.Next()
+		switch tt {
+		case html.ErrorToken:
+			return
+		case html.StartTagToken:
+			token := tokenizer.Token()
+			if token.Data == "h1" {
+				tokenizer.Next()
+				token = tokenizer.Token()
+				fmt.Printf("token = %#v\n", token.Data)
+			}
+		}
+	}
+
+snippet dbopen
+	connectionUrl := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
+		db.username,
+		db.password,
+		constants.TUNNEL_LOCAL_HOST,
+		constants.TUNNEL_LOCAL_PORT,
+		db.name)
+	conn, err := sql.Open("mysql", connectionUrl)
+
+	if err != nil {
+		log.Fatalf("Could not connect to db %s:%s - %s\n", db.host, db.port, err)
+	}
+
+snippet teabase
+	import tea "github.com/charmbracelet/bubbletea"
+
+	type model struct {
+		keyList      []string
+		keySelected  int
+		valueContent string
+	}
+
+	func initialModel() model {
+		return model{
+			keyList: make([]string, 1),
+		}
+	}
+
+	func (m model) Init() tea.Cmd {
+		return nil
+	}
+
+	func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+		switch msg := msg.(type) {
+		case tea.KeyMsg:
+			switch msg.String() {
+			case "ctrl-c", "q":
+				return m, tea.Quit
+			}
+		}
+		return m, nil
+	}
+
+	func (m model) View() string {
+		return ""
+	}
+
+	func main() {
+		p := tea.NewProgram(initialModel())
+		if _, err := p.Run(); err != nil {
+			fmt.Printf("Something's gone wrong %v\n", err)
+			os.Exit(1)
+		}
+	}

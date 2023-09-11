@@ -1,0 +1,39 @@
+snippet front
+	---
+	title: "New post"
+	date: `date +"%Y-%m-%d"`
+	featured_image: "/images/`date +"%Y-%m-%d"`-feature.jpg"
+	author: 'Andrius Miasnikovas'
+	layout: post
+	draft: true
+	tags:
+	 - linux
+	---
+	${2}
+
+snippet link
+	[title](https://www.google.com)
+
+snippet img
+	![description](/images/img.jpg)
+
+snippet `
+	`!v repeat(nr2char(96),3)`bash
+	${1}
+	`!v repeat(nr2char(96),3)`
+
+snippet i
+	_${1}_
+
+snippet b
+	__${1}__
+
+snippet tab
+	| Col1   | Col2      | Col3  |
+	| ------ |:---------:| -----:|
+	| text 1 | center    | 600   |
+	| text 2 | centered  | 12    |
+
+snippet yt
+	[![Click to watch video](http://img.youtube.com/vi/${1}/0.jpg)](http://www.youtube.com/watch?v=${2})
+

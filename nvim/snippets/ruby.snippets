@@ -1,0 +1,81 @@
+snippet int
+	class ${1:Some::Logic}
+	  include Interactor::Initializer
+	
+	  initialize_with :user
+	
+	  def run
+	    user.login
+		$0
+	  end
+	end
+
+snippet desc
+	RSpec.describe ${1:`!p snip.rv = snip.basename.title().replace('_', '').replace('Spec', '')`} do
+	  describe '.for' do
+	    subject { described_class.for(user) }
+	
+	    let(:user) { create(:user) }
+	
+	    it 'does smth' do
+	      expect(subject).not_to be_nil
+	      $0
+	    end
+	  end
+	end
+
+snippet allow
+	allow(${1}).to receive(:${2}).with(${3}).and_return(${4})
+
+snippet expect
+	expect(${1}).to receive(:${2}).with(${3})
+
+snippet let
+	let(:${1}) { ${2} }
+
+snippet frz
+    # frozen_string_literal: true
+
+snippet "(\S+)\.reject" "" r
+	`!p snip.rv=match.group(1)`.reject do |${1:key},${2:value}|
+	$0
+	end
+
+snippet ll
+	puts '${1:a}' * 80
+
+snippet lg
+	old = ActiveRecord::Base.logger
+	ActiveRecord::Base.logger = Logger.new($$stdout)
+	$1
+	ActiveRecord::Base.logger = old
+
+snippet ctx
+	context '$1' do
+	  let(:${3}) { ${4} }
+
+	  it '$2' do
+		subject
+	  end
+	end
+
+snippet ips
+	Benchmark.ips do |x|
+	  x.config(:time => 5, :warmup => 2)
+	
+	  x.report(:test1) do
+	    [a, b].compact.join('.')
+	  end
+
+	  x.report(:test2) do
+	    "#{a}.#{b}"
+	  end
+
+	  x.compare!
+	end
+
+snippet sfs
+	stub_feature_switch(:name, value)
+
+snippet sfsc
+	stub_feature_switch_content(:name, value)
