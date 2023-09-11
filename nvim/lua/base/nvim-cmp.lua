@@ -1,6 +1,7 @@
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
 luasnip.config.setup {}
 
 cmp.setup {
@@ -46,3 +47,5 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+vim.keymap.set("n", "<leader>vs", ":edit $HOME/.config/nvim/snippets/all.snippets<cr>")

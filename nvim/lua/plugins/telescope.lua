@@ -33,3 +33,7 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]resume' })
 
+vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
+vim.keymap.set("n", "<leader>fr", ":Telescope oldfiles<CR>")
+vim.keymap.set("n", "<leader>o", ":Telescope lsp_document_symbols<CR>")
+vim.keymap.set("n", "<leader>fc", ":Telescope commands<CR>")

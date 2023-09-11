@@ -154,5 +154,11 @@ require('lazy').setup({
   { 'theprimeagen/harpoon' },
   { 'github/copilot.vim' },
 
+  { 'mbbill/undotree' },
+  { 'vim-test/vim-test'},
+  { 'tpope/vim-bundler'},
+  { 'is0n/fm-nvim'},
+  { ({'ckipp01/nvim-jenkinsfile-linter', requires = { "nvim-lua/plenary.nvim" } }) }
+
 }, {})
 
