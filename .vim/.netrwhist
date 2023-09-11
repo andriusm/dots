@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Applications/Sonic Pi.app/server'
-let g:netrw_dirhist_2='/Applications/Sonic Pi.app/app/server/vendor/wavefile-0.6.0/lib/wavefile'
-let g:netrw_dirhist_3='/Users/andrius/gocode/src/andriusm/webapp/www'
-let g:netrw_dirhist_4='/Users/andrius/.RubyMine80/restart'
-let g:netrw_dirhist_5='/Users/andrius/projects/vinted/hubot/scripts/metrics/script'
