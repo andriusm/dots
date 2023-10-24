@@ -72,7 +72,7 @@ end
 function DbMigrate()
     print("Running migrations...")
 
-    vim.fn.systemlist({ "bundle", "exec", "rake", "db:migrate"})
+    vim.fn.systemlist({ "bundle", "exec", "rake", "db:migrate" })
 
     if vim.v.shell_error == 0 then
         print("Migration successful")
@@ -80,9 +80,4 @@ function DbMigrate()
         print("Migration failed")
     end
 end
-
-vim.keymap.set("n", "<localleader>x", '<cmd>lua DbMigrate()<CR>')
-vim.keymap.set("n", "<localleader>c", '<cmd>lua BundleInstall()<CR>')
-vim.keymap.set("n", "<localleader>j", '<cmd>lua AltRubyFile()<CR>')
-vim.keymap.set("n", "<localleader>m", '<cmd>lua PackwerkPackageFile()<CR>')
 
