@@ -40,6 +40,12 @@ function AltRubyFile()
         end
     end
 
+    local adir = vim.fn.fnamemodify(afile, ':h')
+
+    if vim.fn.isdirectory(adir) == 0 then
+        vim.fn.mkdir(adir, 'p')
+    end
+
     vim.cmd(":edit " .. afile)
 end
 
