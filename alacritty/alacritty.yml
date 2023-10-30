@@ -1,6 +1,9 @@
 env:
   TERM: xterm-256color
 
+window:
+  startup_mode: SimpleFullScreen
+
 scrolling:
   # Specifying '0' will disable scrolling.
   history: 20000
@@ -13,6 +16,10 @@ scrolling:
   auto_scroll: false
 
 tabspaces: 4
+
+key_bindings:
+  - { key: Return, mods: Command, action: ToggleSimpleFullscreen }
+  - { key: S, mods: Command, chars: "å[" } # tmux scroll mode
 
 font:
   # The normal (roman) font face to use.
@@ -41,7 +48,7 @@ font:
     style: Italic
 
   # Point size of the font
-  size: 18.0
+  size: 16.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
