@@ -1,0 +1,48 @@
+#!/usr/bin/bash
+
+IFS=$'\n'
+#set -euo pipefail
+
+if [ $# -lt 2 ]; then
+  echo "Usage: vid-sort src_dir dst_dir"
+  exit
+fi
+
+SRCDIR="$1"
+TARGETDIR="$2"
+WRDDIR="../weird"
+
+echo mkdir -p "$TARGETDIR"
+echo mkdir -p "$WRDDIR"
+
+while IFS= read -r -d '' fname; do
+
+  M=$(echo "$fname" | grep -E '/{0,1}VID_[0-9]{8}_[0-9]{6}\.mp4$')
+  if [ -n "$M" ]; then
+    F=$(echo "$fname" | rev | cut -d '.' -f 2 | cut -d '/' -f 1 | rev)
+    A=$(echo "$F" | cut -d '_' -f 2 | sed 's/..../&-/;s/-../&-/')
+    B=$(echo "$F" | cut -d '_' -f 3 | sed 's/../&-/;s/-../&-/')
+    T=$(echo "$A $B" | sed 's/ /_/')
+  else
+    #T=$(ffprobe -v quiet -select_streams v:0 -show_entries stream_tags=creation_time -of default=noprint_wrappers=1:nokey=1 -i "$fname")
+    T=$(ffprobe -v quiet -print_format flat -show_format "$fname" | grep creation_time | cut -d '"' -f 2 | cut -d '.' -f 1 | sed 's/T/_/g;s/:/-/g')
+  fi
+
+  if [ -n "$T" ]
+  then
+    YEAR=$(echo "$T" | cut -d '-' -f 1)
+    MONTH=$(echo "$T" | cut -d '-' -f 2)
+
+    new_dir="$TARGETDIR/$YEAR/$MONTH"
+    SUM=$(md5sum "$fname" | cut -d ' ' -f 1)
+    new_name=$(echo "$T $SUM" | sed "s/T/_/gi;s/:/-/gi;s/\..* //gi;s/ /_/g;s/$/.${fname##*.}/gi")
+    #new_name=$(echo "$T" | sed 's/T/_/gi;s/:/-/gi;s/\..*//gi;s/$/.mov/gi')
+
+    echo "mkdir -p $new_dir"
+    echo mv -nv \""$fname"\" "$new_dir/$new_name"
+  else
+    echo mv -nv \""$fname"\" "$WRDDIR"/
+    echo "ERROR: Could not extract info for $fname" > /dev/stderr
+  fi
+done <   <(find "$SRCDIR" \( -iname '*.mov' -o -iname '*.mp4' \) -print0)
+

@@ -1,0 +1,53 @@
+#!/usr/bin/bash
+
+IFS=$'\n'
+#set -euo pipefail
+
+if [ $# -lt 2 ]; then
+  echo "Usage: photo-sort src_dir dst_dir"
+  exit
+fi
+
+SRCDIR="$1"
+TARGETDIR="$2"
+WRDDIR="../weird"
+
+echo mkdir -p "$TARGETDIR"
+echo mkdir -p "$WRDDIR"
+
+while IFS= read -r -d '' fname; do
+  OUT=$(exiv2 "$fname" 2>/dev/null | tr '\0' '\n' | grep 'Image timestamp' | cut -d ' ' -f 4-)
+
+  if [ -z "$OUT" ]; then
+    #echo mv -nv \""$fname"\" "$WRDDIR"/
+    #echo "ERROR: Could not extract info for '$fname'" > /dev/stderr
+    #continue
+    OUT=$(stat "$fname" | grep Modify | cut -d ' ' -f 2-3 | cut -d '.' -f 1 | sed 's/-/:/g' )
+  fi
+
+  D=$(echo "$OUT" | cut -d ' ' -f 1)
+  T=$(echo "$OUT" | cut -d ' ' -f 2)
+
+  if [ -n "$D" ]
+  then
+    YEAR=$(echo "$D" | cut -d ':' -f 1)
+    MONTH=$(echo "$D" | cut -d ':' -f 2)
+    SUM=$(md5sum "$fname" | cut -d ' ' -f 1)
+
+    if [ \( -n "$YEAR" \) ] && [ \( -n "$MONTH" \) ]
+    then
+      new_dir="$TARGETDIR/$YEAR/$MONTH"
+      new_name=$(echo "$D $T $SUM" | sed 's/:/-/gi;s/ /_/gi;s/$/.jpg/gi')
+
+      echo "mkdir -p $new_dir"
+      echo mv -nv \""$fname"\" "$new_dir/$new_name"
+    else
+      echo mv -nv \""$fname"\" "$WRDDIR"/
+      echo "ERROR: Could not parse date for '$fname' : $D" > /dev/stderr
+    fi
+  else
+    echo mv -nv \""$fname"\" "$WRDDIR"/
+    echo "ERROR: Could not extract info for '$fname'" > /dev/stderr
+  fi
+done <   <(find "$SRCDIR" \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.cr3' \) -print0)
+# done <   <(find "$SRCDIR" \( -iname '*.jpg' -o -iname '*.jpeg' \) -print0)

@@ -47,7 +47,7 @@
 [format]
 	pretty = format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
 [core]
-	editor = vim
+	editor = nvim
 	autocrlf = input
 	safecrlf = false
 	excludesfile = /Users/andrius/.global_git_ignore
