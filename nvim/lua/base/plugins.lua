@@ -57,10 +57,12 @@ require('lazy').setup({
   {
     'sainnhe/everforest',
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'everforest'
-    end,
+    -- config = function()
+    --   vim.cmd.colorscheme 'everforest'
+    -- end,
   },
+
+  { 'NLKNguyen/papercolor-theme' },
 
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
