@@ -28,7 +28,8 @@ local on_attach = function(client, buffer)
       client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
         if err then
           local err_msg = string.format("diagnostics error - %s", vim.inspect(err))
-          vim.lsp.log.error(err_msg)
+          print(err_msg)
+          -- vim.lsp.log.error(err_msg)
         end
         if not result then
           return

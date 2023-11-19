@@ -13,6 +13,7 @@ require('plugins.undotree')
 require('base.lsp')
 require('base.nvim-cmp')
 
+require('custom.experiments')
 require('custom.bundle-outdated')
 require('custom.packwerk-check')
 require('custom.ruby')
