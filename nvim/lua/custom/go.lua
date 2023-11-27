@@ -14,3 +14,5 @@ function AltGoFile()
     print(cfile)
     vim.cmd(":edit " .. cfile)
 end
+
+vim.keymap.set("n", "<leader>tb", '<cmd>!go test -bench=.<CR>')
