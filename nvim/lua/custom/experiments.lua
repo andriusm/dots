@@ -31,6 +31,8 @@ function ExtractMethodNames()
   end
 end
 
+-- --------------------------------------------------------------------------------
+
 function OpenPR()
   local file_name = vim.api.nvim_buf_get_name(0)
   local line_number = vim.api.nvim_win_get_cursor(0)[1]
@@ -49,6 +51,10 @@ function OpenPR()
   local url = "https://" .. base .. "/pull/" .. pr
   vim.fn.system("open '" .. url .. "'")
 end
+
+vim.keymap.set("n", "<leader>go", "<cmd>lua OpenPR()<CR>")
+
+-- --------------------------------------------------------------------------------
 
 local function openFloatingWindowWithBorder()
     -- Window size
@@ -127,7 +133,6 @@ end
 vim.api.nvim_create_user_command('OpenFloatingWindowWithBorder', openFloatingWindowWithBorder, {})
 
 
-vim.keymap.set("n", "<leader>1", "<cmd>lua OpenPR()<CR>")
 -- vim.keymap.set("n", "<leader>1", "<cmd>lua Abc()<CR>")
 
 -- --------------------------------------------------------------------------------
