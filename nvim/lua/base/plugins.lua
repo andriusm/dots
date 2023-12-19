@@ -156,6 +156,21 @@ require('lazy').setup({
 
   { 'nvim-treesitter/playground' },
 
+ --  {
+ --    'jackMort/ChatGPT.nvim',
+ --    event = "VeryLazy",
+ --    dependencies = {
+ --      'MunifTanjim/nui.nvim',
+ --      'nvim-lua/plenary.nvim',
+ --      'nvim-telescope/telescope.nvim',
+ --    },
+ --    config = function()
+ --      require('chatgpt').setup({
+	-- api_key_cmd = "echo $OPENAI_API_KEY"
+ --      })
+ --    end 
+ --  },
+
   -- non-kickstart plugins
   { 'fatih/vim-go' },
   { 'theprimeagen/harpoon' },
