@@ -1,0 +1,69 @@
+[colors.bright]
+black = "0x949494"
+blue = "0x4271ae"
+cyan = "0x3e999f"
+green = "0x718c00"
+magenta = "0x8959a8"
+red = "0xd7005f"
+white = "0xf5f5f5"
+yellow = "0xd75f00"
+
+[colors.cursor]
+cursor = "0x4d4d4c"
+text = "0xf3f3f3"
+
+[colors.normal]
+black = "0xededed"
+blue = "0x4271ae"
+cyan = "0x3e999f"
+green = "0x718c00"
+magenta = "0x8959a8"
+red = "0xd7005f"
+white = "0x4d4d4c"
+yellow = "0xd75f00"
+
+[colors.primary]
+background = "0xeeeeee"
+foreground = "0x4d4d4c"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 17.0
+
+[font.bold]
+family = "GoMono Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 1
+
+[font.italic]
+family = "GoMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "GoMono Nerd Font"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "Return"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "å["
+key = "S"
+mods = "Command"
+
+[scrolling]
+history = 20000
+multiplier = 3
+
+[window]
+startup_mode = "FullScreen"
