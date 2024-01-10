@@ -33,7 +33,6 @@ TERM = "xterm-256color"
 size = 17.0
 
 [font.bold]
-family = "GoMono Nerd Font"
 style = "Bold"
 
 [font.glyph_offset]
@@ -41,11 +40,19 @@ x = 0
 y = 1
 
 [font.italic]
-family = "GoMono Nerd Font"
 style = "Italic"
 
 [font.normal]
 family = "GoMono Nerd Font"
+# family = "FiraCode Nerd Font"
+# family = "AnonymicePro Nerd Font"
+# family = "Hack Nerd Font Mono"
+# family = "Inconsolata Nerd Font Mono"
+# family = "MesloLGS NF"
+# family = "EnvyCodeR Nerd Font"
+# family = "Iosevka Nerd Font"
+# family = "JetBrainsMono Nerd Font"
+# family = "SauceCodePro Nerd Font"
 
 [font.offset]
 x = 0
@@ -66,4 +73,4 @@ history = 20000
 multiplier = 3
 
 [window]
-startup_mode = "FullScreen"
+# startup_mode = "FullScreen"
