@@ -9,7 +9,7 @@ M.on_file_load = function()
     end
 
     if vim.bo.filetype == "go" then
-        vim.keymap.set("n", "<localleader>r", '<cmd>GoRun<CR>')
+        vim.keymap.set("n", "<localleader>r", '<cmd>!go run ./...<CR>')
         vim.keymap.set("n", "<localleader>t", '<cmd>GoTest<CR>')
         vim.keymap.set("n", "<localleader>b", '<cmd>GoBuild<CR>')
         vim.keymap.set("n", "<localleader>j", '<cmd>lua AltGoFile()<CR>')
