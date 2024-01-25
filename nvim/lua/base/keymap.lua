@@ -87,3 +87,14 @@ vim.keymap.set("i", "<C-p>", "<cmd>call copilot#Previous()<cr>")
 vim.keymap.set("i", "<C-n>", "<cmd>call copilot#Next()<cr>")
 vim.keymap.set("i", "<C-Bslash>", "<cmd>call copilot#Suggest()<cr>")
 vim.keymap.set("i", "<C-j>", "<cmd>call copilot#Accept()<cr>")
+
+-- colors
+function flipBackgroundColor()
+  if vim.o.background == "dark" then
+    vim.o.background = "light"
+  else
+    vim.o.background = "dark"
+  end
+end
+
+vim.keymap.set("n", "<leader>cc", "<cmd>lua flipBackgroundColor()<cr>")
