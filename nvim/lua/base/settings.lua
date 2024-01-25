@@ -37,5 +37,5 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
-vim.o.background = 'light'
+vim.o.background = 'dark'
 vim.cmd.colorscheme 'PaperColor'
