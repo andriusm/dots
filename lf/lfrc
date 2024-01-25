@@ -1,0 +1,84 @@
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set icons
+set period 1
+
+set preview true
+set previewer ~/.config/lf/pv.sh
+
+#set nopreview
+#set info size:time
+
+set hidden true
+#set color256 true #deprecated
+set drawbox true
+set icons true
+
+cmd open ${{
+  case $(file --mime-type "$f" -bL) in text/*|application/json) $EDITOR "$fx";;
+    video/*|application/pdf) mpv "$f" & ;;
+    image/*) mpv "$f" & ;;
+    *) for f in "$fx"; do open "$f" >/dev/null 2>/dev/null & done;;
+  esac
+}}
+
+cmd mkfile ${{
+  set -f
+  printf "Filename: "
+  read ans
+  $EDITOR "$ans"
+}}
+
+cmd mkdir ${{
+  set -f
+  printf "Directory: "
+  read dname
+  mkdir -p "$dname"
+}}
+
+cmd on-cd &{{
+  source /usr/share/git/completion/git-prompt.sh
+  GIT_PS1_SHOWDIRTYSTATE=auto
+  GIT_PS1_SHOWSTASHSTATE=auto
+  GIT_PS1_SHOWUNTRACKEDFILES=auto
+  GIT_PS1_SHOWUPSTREAM=auto
+  git=$(__git_ps1 " (%s)") || true
+  fmt="\033[32;1m$git\033[0m"
+  lf -remote "send $id echo \"$fmt\""
+}}
+
+cmd get-size &{{
+  sz=$(du -sh "$f" | awk '{ print $1 }')
+  lf -remote "send $id echo \"$sz\""
+}}
+
+map e
+
+map ee $$EDITOR "$f"
+map es $sudo $EDITOR "$f"
+map er $derr "$f"
+
+map ei $sxiv -frs f "$f"
+map ep $mpv "$f"
+
+map u &notify-send "$fx"
+
+map f
+map ff $fzf | xargs sh -c 'nvim "$@" < /dev/tty' nvim
+
+#map fr &notify-send "`df -h --output=avail /dev/nvme0n1p2`"
+#map u $mkdir -p unused ; mv "$f" unused/
+#map t $A=`echo -e "asdf\nqwre" | topmenu`; notify-send "$A"
+
+map gw cd ~/work/projects
+map gs cd ~/Sync
+map gd cd ~/Downloads
+map gl cd ~/.config/lf
+
+map S :get-size 
+map D :delete
+
+map m
+map md :mkdir
+map mf :mkfile

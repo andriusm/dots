@@ -1,0 +1,75 @@
+[options]
+
+allow_bold = true
+audible_bell = false
+bold_is_bright = true
+clickable_url = true
+dynamic_title = true
+
+fullscreen = true
+icon_name = terminal
+mouse_autohide = false
+scroll_on_output = false
+scroll_on_keystroke = true
+scrollback_lines = 1000
+search_wrap = true
+urgent_on_bell = true
+hyperlinks = false
+filter_unmatched_urls = true
+modify_other_keys = false
+size_hints = false
+
+scrollbar = off          # off, left, right
+cursor_blink = system    # system, on, off
+cursor_shape = block     # block, underline, ibeam
+
+font = NotoSansMono 16
+
+[colors]
+
+# --- solarized light ---
+
+foreground          = #586e75
+foreground_bold     = #073642
+cursor              = #073642
+cursor_foreground   = #fdf6e3
+background          = rgba(253, 246, 227)
+#background          = #3f3f3f
+
+color0  = #fdf6e3
+color1  = #dc322f
+color2  = #859900
+color3  = #b58900
+color4  = #268bd2
+color5  = #6c71c4
+color6  = #2aa198
+color7  = #586e75
+color8  = #839496
+color9  = #dc322f
+color10 = #859900
+color11 = #b58900
+color12 = #268bd2
+color13 = #6c71c4
+color14 = #2aa198
+color15 = #002b36
+# Extra colors
+color16 = #cb4b16
+color17 = #d33682
+color18 = #eee8d5
+color19 = #93a1a1
+color20 = #657b83
+color21 = #073642
+
+[hints]
+
+font = Monospace 12
+foreground = #dcdccc
+background = #3f3f3f
+active_foreground = #e68080
+active_background = #3f3f3f
+padding = 2
+border = #3f3f3f
+border_width = 0.5
+roundness = 2.0
+
+# vim: ft=dosini
