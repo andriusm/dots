@@ -43,10 +43,10 @@ y = 1
 style = "Italic"
 
 [font.normal]
-family = "GoMono Nerd Font"
+# family = "GoMono Nerd Font"
 # family = "FiraCode Nerd Font"
 # family = "AnonymicePro Nerd Font"
-# family = "Hack Nerd Font Mono"
+family = "Hack Nerd Font Mono"
 # family = "Inconsolata Nerd Font Mono"
 # family = "MesloLGS NF"
 # family = "EnvyCodeR Nerd Font"
