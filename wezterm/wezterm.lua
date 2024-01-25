@@ -10,7 +10,7 @@ config.scrollback_lines = 10000
 config.default_workspace = "home"
 
 config.window_close_confirmation = "AlwaysPrompt"
-config.default_window_size = { width = 140, height = 40 }
+-- config.default_window_size = { width = 140, height = 40 }
 config.window_padding = {
 	left = 0,
 	right = 0,
