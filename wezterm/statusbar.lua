@@ -50,9 +50,9 @@ wezterm.on('update-right-status', function(window, pane)
   table.insert(cells, date)
 
   -- An entry for each battery (typically 0 or 1 battery)
-  -- for _, b in ipairs(wezterm.battery_info()) do
-  --   table.insert(cells, string.format('%.0f%%', b.state_of_charge * 100))
-  -- end
+  for _, b in ipairs(wezterm.battery_info()) do
+    table.insert(cells, string.format('%.0f%%', b.state_of_charge * 100))
+  end
 
   -- The powerline < symbol
   local LEFT_ARROW = utf8.char(0xe0b3)
@@ -60,12 +60,17 @@ wezterm.on('update-right-status', function(window, pane)
   local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 
   -- Color palette for the backgrounds of each cell
+  -- 'hsl:272 67 23',
+  -- 'hsl:267 44 34',
+  -- 'hsl:277 38 37',
+  -- 'hsl:278 29 45',
+  -- 'hsl:278 33 68',
   local colors = {
-    'hsl:272 67 23',
-    'hsl:267 44 34',
-    'hsl:277 38 37',
-    'hsl:278 29 45',
-    'hsl:278 33 68',
+    'hsl:212 67 23',
+    'hsl:207 44 34',
+    'hsl:227 38 34',
+    'hsl:228 29 45',
+    'hsl:228 33 68',
   }
 
   -- Foreground color for the text across the fade
@@ -84,7 +89,7 @@ wezterm.on('update-right-status', function(window, pane)
     local cell_no = num_cells + 1
     table.insert(elements, { Foreground = { Color = text_fg } })
     table.insert(elements, { Background = { Color = colors[cell_no] } })
-    table.insert(elements, { Text = ' ' .. text .. ' ' })
+    table.insert(elements, { Text = '  ' .. text .. '  ' })
     if not is_last then
       table.insert(elements, { Foreground = { Color = colors[cell_no + 1] } })
       table.insert(elements, { Text = SOLID_LEFT_ARROW })

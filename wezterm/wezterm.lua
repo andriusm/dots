@@ -8,6 +8,7 @@ config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 
 config.scrollback_lines = 10000
 config.default_workspace = "home"
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 config.window_close_confirmation = "AlwaysPrompt"
 -- config.default_window_size = { width = 140, height = 40 }
