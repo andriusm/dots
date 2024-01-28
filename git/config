@@ -1,29 +1,23 @@
 [user]
 	name = Andrius Miasnikovas
 	email = andriusms@gmail.com
+	signingkey = 0137C485
 [color]
 	ui = auto
 [alias]
 	fap = fetch --all --prune
 	pom = pull origin master
 	
-	#mr = "!sh -c 'git checkout -b merge-requests/$1; git pull origin refs/merge-requests/$1' -"
-
-	s = status --short --untracked-files
-	st = status
 	a = add
-	aa = add --all
 	c = commit
-	ca = !git add --all && git commit
-	amend = commit --amend
+	br = branch
 	co = checkout
-	go = checkout -B
-	ps = push
-	fa = fetch --all
-	pl = pull
-	plr = pull --rebase
-	sub = submodule
-	subpull = submodule foreach git pull origin master
+	amend = commit --amend
+	nsm = diff --name-status master
+
+	st = status
+	s = status --short --untracked-files
+
 	r = rebase
 	ri = rebase --interactive
 	rc = rebase --continue
@@ -50,13 +44,15 @@
 	editor = nvim
 	autocrlf = input
 	safecrlf = false
-	excludesfile = /Users/andrius/.global_git_ignore
+	excludesfile = "$HOME/.config/git/global_ignore"
+	quotepath = false
+	commitGraph = true
+	pager = delta
 [diff]
 	guitool = kdiff3
-[difftool "winmerge"]
-	cmd = winmergeu $LOCAL $REMOTE
 [merge]
 	tool = kdiff3
+	conflictstyle = kdiff3
 [credential]
 [apply]
 	whitespace = nowarn
@@ -65,9 +61,26 @@
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[gpg]
+	program = gpg
+
+; [url "git@github.com:"]
+; 	insteadOf = https://github.com/
+
+[pull]
+	ff = only
+[gc]
+	writeCommitGraph = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	light = false
+	side-by-side = true
+
+	syntax-theme = GitHub
+	zero-style = syntax
+[diff]
+	colorMoved = default
+
+# vim:ft=gitconfig
