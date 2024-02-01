@@ -4,11 +4,11 @@ case "$1" in
     *.tar*) tar tf "$1";;
     *.zip) unzip -l "$1";;
     *.rar) unrar l "$1";;
-    *.mp4) ffprobe -i "$1 2>&1";;
-    *.mkv) ffprobe -i "$1 2>&1";;
-    *.mpg) ffprobe -i "$1 2>&1";;
-    *.m4v) ffprobe -i "$1 2>&1";;
-    *.avi) ffprobe -i "$1 2>&1";;
+    *.mp4) f="`basename $1`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" >/dev/null 2>&1 && viu -b "$o" ;;
+    *.mkv) f="`basename $1`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" >/dev/null 2>&1 && viu -b "$o" ;;
+    *.mpg) f="`basename $1`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" >/dev/null 2>&1 && viu -b "$o" ;;
+    *.m4v) f="`basename $1`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" >/dev/null 2>&1 && viu -b "$o" ;;
+    *.avi) f="`basename $1`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" >/dev/null 2>&1 && viu -b "$o" ;;
     *.jpg) viu -b -h "$3" "$1" ;;
     *.jpeg) viu -b -h "$3" "$1" ;;
     *.png) viu -b -h "$3" "$1" ;;
