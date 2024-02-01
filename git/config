@@ -52,7 +52,7 @@
 	guitool = kdiff3
 [merge]
 	tool = kdiff3
-	conflictstyle = kdiff3
+	conflictstyle = diff3
 [credential]
 [apply]
 	whitespace = nowarn
