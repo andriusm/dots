@@ -1,0 +1,8 @@
+export HISTFILE=~/.local/share/.zhistory
+export LESSHISTFILE=/dev/null
+
+# needed for building go project with vips lib
+#export CGO_CFLAGS_ALLOW="-Xpreprocessor"
+
+export EDITOR=nvim
+export PAGER=less

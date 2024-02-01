@@ -1,0 +1,56 @@
+os_name="$(uname -s)"
+
+if [[ "$os_name" == "Darwin" ]]; then
+  alias ls='gls --time-style="+%Y-%m-%d %H:%M:%S" --color=auto'
+  alias open="xdg-open"
+  alias love='/Applications/love.app/Contents/MacOS/love'
+  alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
+fi
+
+alias s='cd ..'
+alias l='ls -Fh'
+alias ll='ls -lFh'
+alias la='ls -laFh'
+
+alias t='tree'
+
+alias cp='cp -i'
+alias df='df -h'
+alias free='free -m'
+alias rs='git reset --hard'
+
+alias ff='find ~/Documents -type f | fzf | nvim'
+alias ee='fzf | nvim'
+alias cpv='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
+
+alias ffmpeg='ffmpeg -hide_banner'
+alias ffprobe='ffprobe -hide_banner'
+alias ffplay='ffplay -hide_banner'
+
+alias 2ascii="perl -pe 's/\e\[?.*?[\@-~]//g'"
+alias cdtmp='cd `mktemp -d /tmp/experiment-XXXXXX`'
+alias tig='tig --no-merges'
+
+alias cnt="find . -type f | wc -l"
+alias oras='curl -s http://wttr.in/Vilnius'
+
+alias ggpull='git pull origin $(current_branch)'
+alias ggpur='git pull --rebase origin $(current_branch)'
+alias ggpush='git push origin $(current_branch)'
+alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
+alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
+alias gam='git commit -a --amend --no-edit'
+alias gbr="git for-each-ref --sort=committerdate refs/heads/"
+
+alias memcache-reset='echo "flush_all" | nc localhost 11211'
+alias del-merged="git branch --merged|grep -v master | xargs -I % sh -c 'git branch -d %'"
+alias pro='hub pull-request -o'
+
+alias pony='ponysay -o hello'
+
+alias fm='mpv https://netradio.ziniur.lt/easyfm.mp3'
+
+alias pf="la | rev | cut -d ' ' -f1 | rev | grep '^\.' | grep -v '/$'"
+alias pd="la | rev | cut -d ' ' -f1 | rev | grep '^\.' | grep '/$'"
+
+alias yt="$HOME/bin/ytfzf/ytfzf"
