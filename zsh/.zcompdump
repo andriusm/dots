@@ -852,7 +852,6 @@ _comps=(
 'locale' '_locale'
 'localedef' '_localedef'
 'locate' '_locate'
-'log' '_nothing'
 'logger' '_logger'
 'logname' '_nothing'
 'look' '_look'

@@ -2,6 +2,8 @@
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
+echo "zshrc exec"
+
 source $ZDOTDIR/constants
 source $ZDOTDIR/aliases
 source $ZDOTDIR/functions
@@ -35,11 +37,13 @@ setopt HIST_REDUCE_BLANKS
 #   eval "$(rbenv init -)"
 # fi
 #
-# if [[ -e /opt/homebrew ]]; then
-#   eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if [[ -e /opt/homebrew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 #   [[ -f /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 #   [[ -f /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
-# fi
 
 export PATH="$HOME/bin:$HOME/go/bin:$PATH"
 export GOPATH="$HOME/go"

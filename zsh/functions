@@ -9,3 +9,19 @@ function b() {
 function h() {
 	history 0 | sort | uniq | cut -d ';' -f 2 | fzf --no-sort
 }
+
+function p() {
+	# autoload -Uz compinit && compinit
+	# #zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+	# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+
+	[[ -f /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+	[[ -f /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
+
+	# To customize prompt, run `p10k configure` or edit ~/Sync/config/mac/zsh/.p10k.zsh.
+	[[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
+
+	source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
+	fpath=(~/.zsh/completion /opt/homebrew/share/zsh/site-functions $fpath)
+	autoload -Uz compinit && compinit -i
+}

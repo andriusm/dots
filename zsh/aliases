@@ -1,7 +1,7 @@
 os_name="$(uname -s)"
 
 if [[ "$os_name" == "Darwin" ]]; then
-  alias ls='gls --time-style="+%Y-%m-%d %H:%M:%S" --color=auto'
+  #alias ls='gls --time-style="+%Y-%m-%d %H:%M:%S" --color=auto'
   alias open="xdg-open"
   alias love='/Applications/love.app/Contents/MacOS/love'
   alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
