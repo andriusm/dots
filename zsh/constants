@@ -1,8 +1,15 @@
 export HISTFILE=~/.local/share/.zhistory
 export LESSHISTFILE=/dev/null
+export HISTTIMEFORMAT="%Y-%m-%d %T "
+
+export CFLAGS="-Wno-error"
+
+export DISABLE_SPRING=true
+export PROPAGATE_DEVELOPMENT_EXCEPTIONS=true
 
 # needed for building go project with vips lib
 #export CGO_CFLAGS_ALLOW="-Xpreprocessor"
 
+export GIT_EDITOR=nvim
 export EDITOR=nvim
 export PAGER=less

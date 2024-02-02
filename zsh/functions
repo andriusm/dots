@@ -1,3 +1,5 @@
+# vi:syntax=sh:
+
 function f() {
 	git co -b feature/$1
 }
@@ -8,6 +10,20 @@ function b() {
 
 function h() {
 	history 0 | sort | uniq | cut -d ';' -f 2 | fzf --no-sort
+}
+
+function current_branch() {
+	ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+	    ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+	    echo "${ref#refs/heads/}"
+}
+
+function pro() {
+	hub pull-request -o -m "$(git l --format="%s" -1 | sed 's/^\* //;s/ (#[0-9]*)$//')" -m "$1" -m "$2"
+}
+
+function draft() {
+	hub pull-request -d -o -m "$(git l --format="%s" -1 | sed 's/^\* //;s/ (#[0-9]*)$//')" -m "$1" -m "$2"
 }
 
 function p() {
@@ -25,3 +41,7 @@ function p() {
 	fpath=(~/.zsh/completion /opt/homebrew/share/zsh/site-functions $fpath)
 	autoload -Uz compinit && compinit -i
 }
+
+if [[ -f $HOME/.config/work/shell_functions ]]; then
+	source $HOME/.config/work/shell_functions
+fi
