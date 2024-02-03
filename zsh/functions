@@ -37,7 +37,8 @@ function p() {
 	# To customize prompt, run `p10k configure` or edit ~/Sync/config/mac/zsh/.p10k.zsh.
 	[[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
 
-	source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
+	[[ -f $HOME/.docker/init-zsh.sh ]] && . $HOME/.docker/init-zsh.sh
+
 	fpath=(~/.zsh/completion /opt/homebrew/share/zsh/site-functions $fpath)
 	autoload -Uz compinit && compinit -i
 }
