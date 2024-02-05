@@ -5,6 +5,12 @@ config.font_size = 16.0
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 -- config.font_size = 16.0 -- best fit for split screen
 
+-- config.color_scheme = 'PaleNightHC'
+-- config.color_scheme = 'PencilLight'
+-- config.color_scheme = 'PencilDark'
+config.color_scheme = 'Solar Flare (base16)'
+-- config.color_scheme = 'Solarized Light (Gogh)'
+
 config.scrollback_lines = 10000
 config.default_workspace = "home"
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
