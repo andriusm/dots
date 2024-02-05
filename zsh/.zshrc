@@ -34,6 +34,9 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
+bindkey -e
+bindkey '^R' history-incremental-search-backward
+
 # if [[ -e ~/.rbenv ]]; then
 #   export PATH=~/.rbenv/shims:~/.rbenv/bin:$PATH
 #   eval "$(rbenv init -)"
