@@ -59,3 +59,7 @@ export GOPATH="$HOME/go"
 # source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
 # fpath=(~/.zsh/completion /opt/homebrew/share/zsh/site-functions $fpath)
 # autoload -Uz compinit && compinit -i
+
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
