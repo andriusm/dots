@@ -18,6 +18,27 @@ keys = {
     mods = 'SHIFT|ALT',
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
   },
+  { key = 'a', mods = 'ALT', action = wezterm.action.PaneSelect },
+  {
+    key = 'h',
+    mods = 'ALT',
+    action = wezterm.action.ActivatePaneDirection 'Left',
+  },
+  {
+    key = 'l',
+    mods = 'ALT',
+    action = wezterm.action.ActivatePaneDirection 'Right',
+  },
+  {
+    key = 'k',
+    mods = 'ALT',
+    action = wezterm.action.ActivatePaneDirection 'Up',
+  },
+  {
+    key = 'j',
+    mods = 'ALT',
+    action = wezterm.action.ActivatePaneDirection 'Down',
+  },
 }
 
 for i = 1, 8 do

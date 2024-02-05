@@ -11,6 +11,8 @@ config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.color_scheme = 'Solar Flare (base16)'
 -- config.color_scheme = 'Solarized Light (Gogh)'
 
+config.pane_select_font_size=64
+
 config.scrollback_lines = 10000
 config.default_workspace = "home"
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
