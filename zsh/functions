@@ -9,7 +9,9 @@ function b() {
 }
 
 function h() {
-	history 0 | sort | uniq | cut -d ';' -f 2 | fzf --no-sort
+	# hcmd=$(history 0 | sort | uniq | cut -d ';' -f 2 | fzf --no-sort | cut -c 8-)
+	hcmd=$(history 0 | cut -c 8- | sort | uniq | cut -d ';' -f 2 | fzf --no-sort)
+	[[ -n $hcmd ]] && eval $hcmd
 }
 
 function current_branch() {
