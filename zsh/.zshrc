@@ -22,6 +22,8 @@ setopt COMPLETE_IN_WORD
 setopt NO_LIST_AMBIGUOUS
 setopt NO_LIST_BEEP
 
+unsetopt BEEP
+
 #history
 setopt SHARE_HISTORY
 HISTFILE=${ZDOTDIR}/.zsh_history
