@@ -2,8 +2,6 @@
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
-echo "zshrc exec"
-
 source $ZDOTDIR/constants
 source $ZDOTDIR/aliases
 source $ZDOTDIR/functions
