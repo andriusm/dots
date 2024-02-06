@@ -38,6 +38,8 @@ alias rails='rbenv exec bundle exec rails'
 alias rake='rbenv exec bundle exec rake'
 alias xdocker='DOCKER_DEFAULT_PLATFORM=linux/amd64 docker'
 alias ag='ag --hidden'
+alias fd='fd -ui'
+alias vim='nvim'
 
 alias ff='find ~/Documents -type f | fzf | nvim'
 alias ee='fzf | nvim'
