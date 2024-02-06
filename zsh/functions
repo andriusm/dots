@@ -9,8 +9,7 @@ function b() {
 }
 
 function h() {
-	# hcmd=$(history 0 | sort | uniq | cut -d ';' -f 2 | fzf --no-sort | cut -c 8-)
-	hcmd=$(history 0 | cut -c 8- | sort | uniq | cut -d ';' -f 2 | fzf --no-sort)
+	hcmd=$(history 0 | awk '!x[$2]++' | cut -c 8- | fzf --tac --no-sort)
 	[[ -n $hcmd ]] && eval $hcmd
 }
 
