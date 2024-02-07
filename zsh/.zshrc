@@ -61,3 +61,30 @@ export GOPATH="$HOME/go"
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
+
+# --------------------------------------------------------------------------------
+
+git_branch() {
+  local branch=""
+  # Check if the current directory is in a Git repository
+  if git rev-parse --git-dir > /dev/null 2>&1; then
+    # Get the name of the current branch
+    branch=$(git branch --show-current)
+    # If the branch is not empty, echo it with formatting
+    if [ -n "$branch" ]; then
+      echo "$branch"
+    fi
+  fi
+}
+
+# PROMPT="%F{blue}%~ $(git_branch) %F{cyan}%B%%%b%f "
+
+RPROMPT=$'%{\e[38;2;0;0;0m\e[48;2;166;175;184m%} %* %k%f'
+
+autoload -Uz add-zsh-hook
+load_prompt() {
+  PROMPT_BASE=$'%{\e[38;2;255;255;255m\e[48;2;70;130;180m%} %~ %k%{\e[38;2;70;130;180m\e[48;2;124;200;68m%}%{\e[38;2;0;0;0m\e[48;2;124;200;68m%} '
+  PROMPT_END=$' %k%{\e[38;2;124;200;68m%} %k%f%# '
+  PROMPT="$PROMPT_BASE$(git_branch)$PROMPT_END"
+}
+add-zsh-hook precmd load_prompt
