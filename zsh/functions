@@ -9,7 +9,8 @@ function b() {
 }
 
 function h() {
-	hcmd=$(history 0 | awk '!x[$2]++' | cut -c 8- | fzf --tac --no-sort)
+	# hcmd=$(history 0 | awk '!x[$2]++' | cut -c 8- | fzf --tac --no-sort)
+	hcmd=$(history 0 | cut -c 8- | fzf --tac --no-sort)
 	[[ -n $hcmd ]] && eval $hcmd
 }
 
@@ -32,11 +33,10 @@ function p() {
 	# #zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 	# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
-	[[ -f /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-	[[ -f /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
+	# [[ -f /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+	# [[ -f /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
 
-	# To customize prompt, run `p10k configure` or edit ~/Sync/config/mac/zsh/.p10k.zsh.
-	[[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
+	# [[ -f $ZDOTDIR/.p10k.zsh ]] && . $ZDOTDIR/.p10k.zsh
 
 	[[ -f $HOME/.docker/init-zsh.sh ]] && . $HOME/.docker/init-zsh.sh
 

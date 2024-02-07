@@ -63,6 +63,8 @@ zle -N edit-command-line
 bindkey '^Xe' edit-command-line
 
 # --------------------------------------------------------------------------------
+# prompt
+# --------------------------------------------------------------------------------
 
 git_branch() {
   local branch=""
@@ -88,3 +90,13 @@ load_prompt() {
   PROMPT="$PROMPT_BASE$(git_branch)$PROMPT_END"
 }
 add-zsh-hook precmd load_prompt
+
+# --------------------------------------------------------------------------------
+# completion
+# --------------------------------------------------------------------------------
+
+[[ -f $HOME/.docker/init-zsh.sh ]] && . $HOME/.docker/init-zsh.sh
+
+fpath=(~/.zsh/completion /opt/homebrew/share/zsh/site-functions $fpath)
+autoload -Uz compinit && compinit -i
+
