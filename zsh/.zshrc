@@ -48,7 +48,7 @@ fi
 #   [[ -f /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 #   [[ -f /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
 
-export PATH="$HOME/bin:$HOME/go/bin:$PATH"
+export PATH="$HOME/bin:$HOME/bin/wrk:$HOME/go/bin:$PATH"
 export GOPATH="$HOME/go"
 
 # To customize prompt, run `p10k configure` or edit ~/Sync/config/mac/zsh/.p10k.zsh.

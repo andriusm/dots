@@ -69,7 +69,6 @@ alias gbr="git for-each-ref --sort=committerdate refs/heads/"
 alias bepr="bundle exec pronto run"
 alias memcache-reset='echo "flush_all" | nc localhost 11211'
 alias del-merged="git branch --merged|grep -v master | xargs -I % sh -c 'git branch -d %'"
-alias pro='hub pull-request -o'
 
 alias pony='ponysay -o hello'
 
