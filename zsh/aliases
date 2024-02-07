@@ -3,10 +3,11 @@
 os_name="$(uname -s)"
 
 if [[ "$os_name" == "Darwin" ]]; then
-  #alias ls='gls --time-style="+%Y-%m-%d %H:%M:%S" --color=auto'
-  alias open="xdg-open"
   alias love='/Applications/love.app/Contents/MacOS/love'
   alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
+elif [[ "$os_name" == "Linux" ]]; then
+  alias ls='ls --time-style="+%Y-%m-%d %H:%M:%S" --color=auto'
+  alias open="xdg-open"
 fi
 
 alias s='cd ..'
@@ -36,6 +37,7 @@ alias fix='bundle exec rubocop -x `git diff-tree --no-commit-id --name-only -r o
 alias bundle='rbenv exec bundle'
 alias rails='rbenv exec bundle exec rails'
 alias rake='rbenv exec bundle exec rake'
+alias mg='bundle exec rake db:migrate'
 alias xdocker='DOCKER_DEFAULT_PLATFORM=linux/amd64 docker'
 alias ag='ag --hidden'
 alias fd='fd -ui'
