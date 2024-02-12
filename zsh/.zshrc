@@ -35,16 +35,6 @@ setopt HIST_REDUCE_BLANKS
 bindkey -e
 bindkey '^R' history-incremental-search-backward
 
-# if [[ -e ~/.rbenv ]]; then
-#   export PATH=~/.rbenv/shims:~/.rbenv/bin:$PATH
-#   eval "$(rbenv init -)"
-# fi
-#
-
-if [[ -e /opt/homebrew ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 #   [[ -f /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 #   [[ -f /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -100,3 +90,15 @@ add-zsh-hook precmd load_prompt
 fpath=(~/.zsh/completion /opt/homebrew/share/zsh/site-functions $fpath)
 autoload -Uz compinit && compinit -i
 
+# --------------------------------------------------------------------------------
+# brew and rbenv
+# --------------------------------------------------------------------------------
+
+if [[ -e /opt/homebrew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if [[ -e ~/.rbenv ]]; then
+  export PATH=~/.rbenv/shims:~/.rbenv/bin:$PATH
+  eval "$(rbenv init -)"
+fi
