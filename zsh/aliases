@@ -27,6 +27,7 @@ alias cp='cp -i'
 alias df='df -h'
 alias free='free -m'
 alias rs='git reset --hard'
+alias ts='tailscale'
 
 alias fzf='fzf --exact'
 alias hex='printf "%x\n" $1'
