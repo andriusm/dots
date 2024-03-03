@@ -67,6 +67,18 @@ require('lazy').setup({
   { 'rcarriga/nvim-notify' },
 
   {
+    'michaelrommel/nvim-silicon',
+    lazy = true,
+    cmd = "Silicon",
+    config = function()
+      require("silicon").setup({
+        font = "Meslo=34;Meslo=34",
+        background = "#e3f9fd"
+      })
+    end
+  },
+
+  {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
