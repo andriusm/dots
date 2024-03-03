@@ -34,7 +34,8 @@ function BundleOutdated()
     local on_exit = function(obj)
         local found = false
 
-        for line in string.gmatch(obj.stdout, "([^\n]*)\n?") do
+        -- for line in string.gmatch(obj.stdout, "([^\n]*)\n?") do
+        for line in string.gmatch(obj, "([^\n]*)\n?") do
             if line ~= "" then
                 if found then
                     local key = line:match("^[^%s]*")
@@ -52,7 +53,10 @@ function BundleOutdated()
     end
 
     print("running bundle outdated")
-    vim.system({ 'bundle', 'outdated', '--strict' }, { detach = true, timeout = -1, text = true }, on_exit)
+    -- vim.system({ 'bundle', 'outdated', '--strict' }, { detach = true, timeout = -1, text = true }, on_exit)
+    local res = vim.fn.system({ 'bundle', 'outdated', '--strict' })
+    -- print(res)
+    on_exit(res)
 end
 
 vim.keymap.set("n", "<leader>x", "<cmd>lua BundleOutdated()<CR>")
