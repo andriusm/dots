@@ -79,3 +79,6 @@ snippet sfs
 
 snippet sfsc
 	stub_feature_switch_content(:name, value)
+
+snippet hp
+	Authorization.has_permission?(user&.roles, :${1:item}, :${2:create})
