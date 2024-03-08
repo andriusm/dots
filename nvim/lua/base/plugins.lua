@@ -72,7 +72,7 @@ require('lazy').setup({
     cmd = "Silicon",
     config = function()
       require("silicon").setup({
-        font = "Meslo=34;Meslo=34",
+        font = "Menlo=34;Menlo=34",
         background = "#e3f9fd"
       })
     end

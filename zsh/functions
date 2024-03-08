@@ -44,6 +44,12 @@ function p() {
 	autoload -Uz compinit && compinit -i
 }
 
+ww() {
+    BASE_DIR="$HOME/work/scratch/"
+    CHOSE=$(fd -t d -d 2 --base-directory "$BASE_DIR" . | grep '\d\dw\d\d' | awk -F'/' 'NF > 2 {print}' | fzf)
+    pushd "$BASE_DIR/$CHOSE" 2>&1 > /dev/null
+}
+
 if [[ -f $HOME/.config/work/shell_functions ]]; then
 	source $HOME/.config/work/shell_functions
 fi
