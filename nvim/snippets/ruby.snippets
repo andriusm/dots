@@ -80,5 +80,7 @@ snippet sfs
 snippet sfsc
 	stub_feature_switch_content(:name, value)
 
-snippet hp
-	Authorization.has_permission?(user&.roles, :${1:item}, :${2:create})
+snippet role
+	UserAuthentication::Users::Facade.user_roles(${1:user_id})
+snippet perm
+	Authorization.has_permission?(user.roles, :${1:item}, :${2:create})

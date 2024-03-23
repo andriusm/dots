@@ -5,7 +5,7 @@ export HISTTIMEFORMAT="%Y-%m-%d %T "
 export CFLAGS="-Wno-error"
 
 export DISABLE_SPRING=true
-export PROPAGATE_DEVELOPMENT_EXCEPTIONS=true
+export PROPAGATE_DEVELOPMENT_EXCEPTIONS=false
 
 # needed for building go project with vips lib
 #export CGO_CFLAGS_ALLOW="-Xpreprocessor"

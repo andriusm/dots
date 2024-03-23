@@ -163,3 +163,5 @@ vim.api.nvim_create_user_command('OpenFloatingWindowWithBorder', openFloatingWin
 
 -- print(vim.fn.environ()["HOME"])
 -- print(vim.fn.cusor)
+
+-- --------------------------------------------------------------------------------

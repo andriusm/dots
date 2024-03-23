@@ -98,4 +98,12 @@ function flipBackgroundColor()
   end
 end
 
+-- debugging
+vim.keymap.set("n", "<F5>", "<cmd>lua require('dap').continue()<cr>")
+vim.keymap.set("n", "<F7>", "<cmd>lua require('dap').step_into()<cr>")
+vim.keymap.set("n", "<F8>", "<cmd>lua require('dap').step_over()<cr>")
+vim.keymap.set("n", "<F9>", "<cmd>lua require('dap').toggle_breakpoint()<cr>")
+vim.keymap.set("n", "<F12>", "<cmd>lua require('dap').repl.toggle()<cr>")
+
+-- custom
 vim.keymap.set("n", "<leader>cc", "<cmd>lua flipBackgroundColor()<cr>")
