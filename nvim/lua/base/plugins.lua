@@ -194,6 +194,7 @@ require('lazy').setup({
     dependencies = {
       'suketa/nvim-dap-ruby',
       'leoluz/nvim-dap-go',
+      'nvim-neotest/nvim-nio',
       'rcarriga/nvim-dap-ui',
     },
     config = function()
