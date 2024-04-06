@@ -1,6 +1,12 @@
+local lsp_file = "/Users/andrius/src/educationalsp/educationalsp"
+
+if not (vim.fn.filereadable(lsp_file) == 1) then
+    return
+end
+
 local client = vim.lsp.start_client({
     name = "testlsp",
-    cmd = { "/Users/andrius/src/educationalsp/educationalsp" },
+    cmd = { lsp_file },
     filetypes = { "markdown" },
 })
 
