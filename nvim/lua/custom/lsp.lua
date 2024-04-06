@@ -1,4 +1,4 @@
-local lsp_file = "/Users/andrius/src/educationalsp/educationalsp"
+local lsp_file = "/Users/andrius/src/learnlsp/learnlsp"
 
 if not (vim.fn.filereadable(lsp_file) == 1) then
     return
