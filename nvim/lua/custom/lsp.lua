@@ -1,6 +1,8 @@
-local lsp_file = "/Users/andrius/src/learnlsp/learnlsp"
+local lsp_file = "learnlsp"
 
-if not (vim.fn.filereadable(lsp_file) == 1) then
+local exit_code = os.execute("which " .. lsp_file)
+
+if not (exit_code == 0) then
     return
 end
 
