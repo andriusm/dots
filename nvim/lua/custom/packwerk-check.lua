@@ -23,7 +23,11 @@ function PackwerkCheck()
     vim.api.nvim_win_set_cursor(0, { line_number, 0 })
     vim.cmd('normal! zz')
 
-    vim.api.nvim_buf_set_virtual_text(0, ns_id, line_number - 1, { { msg, "Error" } }, {})
+    local opts = {
+        virt_text = { { msg, "Error" } },
+        virt_text_pos = "eol",
+    }
+    vim.api.nvim_buf_set_extmark(0, ns_id, line_number - 1, 0, opts)
 end
 
 vim.keymap.set("n", "<leader>z", "<cmd>lua PackwerkCheck()<CR>")

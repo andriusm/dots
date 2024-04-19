@@ -18,7 +18,7 @@ if not client then
 end
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
+    pattern = "markdown,ruby",
     callback = function()
         vim.lsp.buf_attach_client(0, client)
     end,

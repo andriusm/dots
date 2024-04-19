@@ -87,7 +87,12 @@ vim.keymap.set("n", "-", ":Lf<CR>")
 vim.keymap.set("i", "<C-p>", "<cmd>call copilot#Previous()<cr>")
 vim.keymap.set("i", "<C-n>", "<cmd>call copilot#Next()<cr>")
 vim.keymap.set("i", "<C-Bslash>", "<cmd>call copilot#Suggest()<cr>")
-vim.keymap.set("i", "<C-j>", "<cmd>call copilot#Accept()<cr>")
+vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-line)')
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
 
 -- colors
 function flipBackgroundColor()

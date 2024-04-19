@@ -33,6 +33,15 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]resume' })
 
+vim.keymap.set('n', '<leader>skg', function()
+  require('telescope.builtin').live_grep({glob_pattern="*.rb"})
+end, { desc = '[S]earch [K]only-rb [G]rep' })
+
+vim.keymap.set('n', '<leader>scg', function()
+  local filepath = vim.fn.expand('%:p:h')
+  require('telescope.builtin').live_grep({ cwd = filepath })
+end, { desc = '[S]earch [C]urrent-dir [G]rep' })
+
 vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>")
 vim.keymap.set("n", "<leader>rc", ":Telescope oldfiles<CR>")
 vim.keymap.set("n", "<leader>o", ":Telescope lsp_document_symbols<CR>")
