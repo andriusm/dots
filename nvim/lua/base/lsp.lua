@@ -134,6 +134,7 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
     }
+    require('lspconfig').ruby_lsp.setup({})
   end
 }
 

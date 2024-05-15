@@ -94,6 +94,12 @@ vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
 })
 vim.g.copilot_no_tab_map = true
 
+vim.api.nvim_set_hl(0, 'CopilotSuggestion', {
+  bg = '#dddd33',
+  fg = '#333333',
+  ctermfg = 8,
+})
+
 -- colors
 function flipBackgroundColor()
   if vim.o.background == "dark" then

@@ -34,8 +34,20 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]resume' })
 
 vim.keymap.set('n', '<leader>skg', function()
-  require('telescope.builtin').live_grep({glob_pattern="*.rb"})
+  require('telescope.builtin').live_grep({
+    glob_pattern="*.rb",
+    prompt_title = 'Search Ruby Files',
+  })
 end, { desc = '[S]earch [K]only-rb [G]rep' })
+
+vim.keymap.set('n', '<leader>skl', function()
+  require('telescope.builtin').live_grep({
+    glob_pattern = '*.rb',
+    prompt_title = 'Search Ruby non-spec files',
+    hidden = true,
+    file_ignore_patterns = { "_spec%.rb$" }
+  })
+end, { desc = '[S]earch [K]non-spec-rb [G]rep' })
 
 vim.keymap.set('n', '<leader>scg', function()
   local filepath = vim.fn.expand('%:p:h')

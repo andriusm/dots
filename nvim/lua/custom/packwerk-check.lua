@@ -3,10 +3,6 @@ function PackwerkCheck()
     vim.api.nvim_buf_clear_namespace(0, ns_id, 0, -1)
 
     local output = vim.fn.systemlist({ "/Users/andrius/.cargo/bin/pks", "check" })
-    -- if vim.v.shell_error ~= 0 then
-    --     print("Error running packwerk check")
-    --     return
-    -- end
 
     local line = output[1]
     if line == "No violations detected!" then
@@ -30,5 +26,5 @@ function PackwerkCheck()
     vim.api.nvim_buf_set_extmark(0, ns_id, line_number - 1, 0, opts)
 end
 
-vim.keymap.set("n", "<leader>z", "<cmd>lua PackwerkCheck()<CR>")
+vim.keymap.set("n", "<leader>xp", "<cmd>lua PackwerkCheck()<CR>")
 
