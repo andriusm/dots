@@ -81,7 +81,7 @@ vim.keymap.set("n", "<F4>", function()
 end)
 
 -- fm-nvim
-vim.keymap.set("n", "-", ":Lf<CR>")
+--vim.keymap.set("n", "-", ":Lf<CR>")
 
 -- copilot
 vim.keymap.set("i", "<C-p>", "<cmd>call copilot#Previous()<cr>")
