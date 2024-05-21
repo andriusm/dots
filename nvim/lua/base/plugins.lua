@@ -28,7 +28,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -52,7 +52,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',      opts = {} },
 
   {
     'sainnhe/everforest',
@@ -95,16 +95,16 @@ require('lazy').setup({
 
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
-        vim.keymap.set({'n', 'v'}, ']c', function()
+        vim.keymap.set({ 'n', 'v' }, ']c', function()
           if vim.wo.diff then return ']c' end
           vim.schedule(function() gs.next_hunk() end)
           return '<Ignore>'
-        end, {expr=true, buffer = bufnr, desc = "Jump to next hunk"})
-        vim.keymap.set({'n', 'v'}, '[c', function()
+        end, { expr = true, buffer = bufnr, desc = "Jump to next hunk" })
+        vim.keymap.set({ 'n', 'v' }, '[c', function()
           if vim.wo.diff then return '[c' end
           vim.schedule(function() gs.prev_hunk() end)
           return '<Ignore>'
-        end, {expr=true, buffer = bufnr, desc = "Jump to previous hunk"})
+        end, { expr = true, buffer = bufnr, desc = "Jump to previous hunk" })
       end,
     },
   },
@@ -113,15 +113,35 @@ require('lazy').setup({
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
-    opts = {
-      options = {
-        path = 1,
+    -- opts = {
+    --   options = {
+    --     path = 1,
+    --     icons_enabled = false,
+    --     theme = 'auto',
+    --     component_separators = '|',
+    --     section_separators = '',
+    --   },
+    -- },
+    config = function()
+      require('lualine').setup({
+        path = 0,
         icons_enabled = false,
         theme = 'auto',
         component_separators = '|',
         section_separators = '',
-      },
-    },
+        sections = {
+          lualine_a = { 'mode' },
+          lualine_b = { function()
+            return ""
+          end
+          },
+          lualine_c = { 'filename' },
+          lualine_x = { 'encoding', 'fileformat', 'filetype' },
+          lualine_y = { 'progress' },
+          lualine_z = { 'location' },
+        },
+      })
+    end
   },
 
   {
@@ -136,7 +156,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',     opts = {} },
 
   {
     'nvim-telescope/telescope.nvim',
@@ -168,27 +188,27 @@ require('lazy').setup({
 
   { 'nvim-treesitter/playground' },
 
- --  {
- --    'jackMort/ChatGPT.nvim',
- --    event = "VeryLazy",
- --    dependencies = {
- --      'MunifTanjim/nui.nvim',
- --      'nvim-lua/plenary.nvim',
- --      'nvim-telescope/telescope.nvim',
- --    },
- --    config = function()
- --      require('chatgpt').setup({
-	-- api_key_cmd = "echo $OPENAI_API_KEY"
- --      })
- --    end 
- --  },
+  --  {
+  --    'jackMort/ChatGPT.nvim',
+  --    event = "VeryLazy",
+  --    dependencies = {
+  --      'MunifTanjim/nui.nvim',
+  --      'nvim-lua/plenary.nvim',
+  --      'nvim-telescope/telescope.nvim',
+  --    },
+  --    config = function()
+  --      require('chatgpt').setup({
+  -- api_key_cmd = "echo $OPENAI_API_KEY"
+  --      })
+  --    end
+  --  },
 
--- non-kickstart plugins
+  -- non-kickstart plugins
   { 'fatih/vim-go' },
   { 'theprimeagen/harpoon' },
   { 'github/copilot.vim' },
 
--- debugger
+  -- debugger
   {
     'mfussenegger/nvim-dap',
     dependencies = {
@@ -201,16 +221,16 @@ require('lazy').setup({
       require("dapui").setup()
       require("dap-ruby").setup()
       require("dap-go").setup()
-      require("nvim-dap-virtual-text").setup{
-        enabled = true,                        -- enable this plugin (the default)
-        enabled_commands = true,               -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
-        highlight_changed_variables = true,    -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
-        highlight_new_as_changed = false,      -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
-        show_stop_reason = true,               -- show stop reason when stopped for exceptions
-        commented = false,                     -- prefix virtual text with comment string
-        only_first_definition = true,          -- only show virtual text at first definition (if there are multiple)
-        all_references = false,                -- show virtual text on all all references of the variable (not only definitions)
-        clear_on_continue = false,             -- clear virtual text on "continue" (might cause flickering when stepping)
+      require("nvim-dap-virtual-text").setup {
+        enabled = true,                     -- enable this plugin (the default)
+        enabled_commands = true,            -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
+        highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
+        highlight_new_as_changed = false,   -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
+        show_stop_reason = true,            -- show stop reason when stopped for exceptions
+        commented = false,                  -- prefix virtual text with comment string
+        only_first_definition = true,       -- only show virtual text at first definition (if there are multiple)
+        all_references = false,             -- show virtual text on all all references of the variable (not only definitions)
+        clear_on_continue = false,          -- clear virtual text on "continue" (might cause flickering when stepping)
         --- A callback that determines how a variable is displayed or whether it should be omitted
         --- @param variable Variable https://microsoft.github.io/debug-adapter-protocol/specification#Types_Variable
         --- @param buf number
@@ -229,9 +249,9 @@ require('lazy').setup({
         virt_text_pos = vim.fn.has 'nvim-0.10' == 1 and 'inline' or 'eol',
 
         -- experimental features:
-        all_frames = false,                    -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
-        virt_lines = false,                    -- show virtual lines instead of virtual text (will flicker!)
-        virt_text_win_col = nil                -- position the virtual text at a fixed window column (starting from the first text column) ,
+        all_frames = false,     -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
+        virt_lines = false,     -- show virtual lines instead of virtual text (will flicker!)
+        virt_text_win_col = nil -- position the virtual text at a fixed window column (starting from the first text column) ,
       }
     end,
     dap_configurations = {
@@ -258,7 +278,7 @@ require('lazy').setup({
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("oil").setup{
+      require("oil").setup {
         columns = { "icon" },
         view_options = {
           show_hidden = true,
@@ -270,10 +290,9 @@ require('lazy').setup({
   },
 
   { 'mbbill/undotree' },
-  { 'vim-test/vim-test'},
-  { 'tpope/vim-bundler'},
-  { 'is0n/fm-nvim'},
-  { ({'ckipp01/nvim-jenkinsfile-linter', requires = { "nvim-lua/plenary.nvim" } }) }
+  { 'vim-test/vim-test' },
+  { 'tpope/vim-bundler' },
+  { 'is0n/fm-nvim' },
+  { ({ 'ckipp01/nvim-jenkinsfile-linter', requires = { "nvim-lua/plenary.nvim" } }) }
 
 }, {})
-
