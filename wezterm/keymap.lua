@@ -1,12 +1,29 @@
 local wezterm = require("wezterm")
 
 local keys = {}
+local scheme_light = 'Solarized Light (Gogh)'
+local scheme_dark = 'Solar Flare (base16)'
 
 keys = {
   {
     key = 't',
     mods = 'ALT',
-    action = wezterm.action.SpawnTab 'CurrentPaneDomain',
+    action = wezterm.action.SpawnTab('CurrentPaneDomain'),
+  },
+  {
+    key = 'c',
+    mods = 'ALT',
+    action = wezterm.action_callback(function(window, pane)
+      local overrides = window:get_config_overrides() or {}
+      local current_scheme = overrides.color_scheme
+      local new_scheme = current_scheme == scheme_light and scheme_dark or scheme_light
+
+      print('Switching color scheme to', new_scheme)
+
+      window:set_config_overrides({
+        color_scheme = new_scheme,
+      })
+    end),
   },
   {
     key = '\\',
