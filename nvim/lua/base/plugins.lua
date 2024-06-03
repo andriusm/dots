@@ -159,6 +159,14 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim',     opts = {} },
 
   {
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("fzf-lua").setup({})
+    end
+  },
+
+  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
