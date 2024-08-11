@@ -7,6 +7,10 @@
 [alias]
 	fap = fetch --all --prune
 	pom = pull origin master
+
+	wta = worktree add
+	wtr = worktree remove
+	wtl = worktree list
 	
 	a = add
 	c = commit
