@@ -8,7 +8,6 @@ function Abc()
 end
 
 function ExtractMethodNames()
-  print("sdf")
   local parser = vim.treesitter.get_parser(0, 'ruby')
   local tree = parser:parse()[1]
   local root = tree:root()
@@ -165,3 +164,72 @@ vim.api.nvim_create_user_command('OpenFloatingWindowWithBorder', openFloatingWin
 -- print(vim.fn.cusor)
 
 -- --------------------------------------------------------------------------------
+--
+local function execute_http_request()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+
+  local in_comment = false
+  local comment_lines = {}
+  local start_line, end_line
+
+  -- Find the first multiline comment
+  for i, line in ipairs(lines) do
+    if line:match("/%*") then
+      in_comment = true
+      start_line = i
+    end
+    if in_comment then
+      table.insert(comment_lines, line)
+    end
+    if line:match("%*/") then
+      in_comment = false
+      end_line = i
+      break
+    end
+  end
+
+  if not start_line or not end_line then
+    print("No multiline comment found")
+    return
+  end
+
+  -- Extract HTTP verb, URL, and JSON body
+  -- local http_verb, url = comment_lines[2]:match("/%*(%w+)%s+\"([^\"]+)\"")
+  local http_verb, url = comment_lines[2]:match("(%w+) (http?://.*)")
+  local json_body = table.concat(comment_lines, "\n", 3, #comment_lines - 1)
+
+  if not http_verb or not url then
+    print("Invalid comment format")
+    return
+  end
+
+  -- Prepare curl command
+  local curl_cmd
+  if http_verb == "POST" then
+    curl_cmd = string.format('curl -s -X %s -d \'%s\' %s', http_verb, json_body, url)
+  else
+    curl_cmd = string.format('curl -s -X %s %s', http_verb, url)
+  end
+
+  -- Execute curl command
+  local handle = io.popen(curl_cmd)
+  local response = handle:read("*a")
+  handle:close()
+
+  if response:sub(-1) == "\n" then
+    response = response:sub(1, -2)
+  end
+
+  local response_lines = vim.split(response, '\n')
+  vim.api.nvim_buf_set_lines(bufnr, end_line + 1, end_line + #response_lines + 1, false, response_lines)
+  --
+  -- use this to add new lines, instead of replacing
+  -- vim.api.nvim_buf_set_lines(bufnr, end_line + 1, end_line + #response_lines, false, response_lines)
+end
+
+-- Command to call the function
+vim.api.nvim_create_user_command('ExecuteHttpRequest', execute_http_request, {})
+vim.keymap.set("n", "<localleader>w", '<cmd>ExecuteHttpRequest<CR>')
+
+

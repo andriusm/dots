@@ -1,6 +1,13 @@
+# for startup time profiling, also check end of file
+# zmodload zsh/zprof
+
 # if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
+
+if [[ -f $ZDOTDIR/work_constants ]]; then
+  source $ZDOTDIR/work_constants
+fi
 
 source $ZDOTDIR/constants
 source $ZDOTDIR/aliases
@@ -102,9 +109,13 @@ if [[ -e ~/.rbenv ]]; then
   eval "$(rbenv init -)"
 fi
 
-export NVM_DIR="$HOME/.nvm"
+# export NVM_DIR="$HOME/.nvm"
 
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# eval "$(zoxide init zsh)"
 
 export PATH="$HOME/bin:$HOME/bin/wrk:$HOME/go/bin:$PATH:$HOME/src/plan9port/bin"
+
+# zprof
