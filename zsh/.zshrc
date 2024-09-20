@@ -116,6 +116,6 @@ fi
 
 # eval "$(zoxide init zsh)"
 
-export PATH="$HOME/bin:$HOME/bin/wrk:$HOME/go/bin:$PATH:$HOME/src/plan9port/bin"
+export PATH="$HOME/bin:$HOME/bin/wrk:$HOME/go/bin:$HOME/src/plan9port/bin:/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # zprof
