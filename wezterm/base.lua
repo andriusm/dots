@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = {}
 
 config.font_size = 16.0
-config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
+-- config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 -- config.font_size = 16.0 -- best fit for split screen
 
 -- config.color_scheme = 'PaleNightHC'
