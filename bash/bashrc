@@ -1,0 +1,41 @@
+
+alias l="ls"
+alias ll="ls -lh"
+alias la="ls -lah"
+
+export HISTSIZE=10000
+export HISTFILESIZE=40000
+export HISTFILE=~/.config/generated/bash_history
+export HISTCONTROL=ignoreboth
+export HISTIGNORE="ls:cd:exit:history"
+
+#export TMOUT=300 # auto logout after 5min
+#export CDPATH="/usr/local:/usr/share"
+
+export VISUAL=nvim
+export EDITOR=$VISUAL
+export LANG=en_US.UTF-8
+
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+export PS1="\w $ "
+
+export PATH="$HOME/bin:$PATH"
+
+shopt -s histappend
+shopt -s checkwinsize
+shopt -s dirspell # correct typos when auto-completing paths
+shopt -s dotglob  # includes dot files when globbing
+shopt -s globstar # allow recursive globbing using **
+shopt -s expand_aliases # allows aliases to work in scripts
+shopt -s cmdhist # stores multiline commands as single entry in history
+shopt -s lithist # preserve formatting for multiline commands in history
+shopt -s nocaseglob # case-insensitive globbing
+
+shopt -s xpg_echo # POSIX compliant echo
+shopt -s execfail # don't exit shell if it failed
+#shopt -s functrace # for debugging shell functions
+
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
+bind "set completion-ignore-case on"
+bind "TAB:menu-complete"
