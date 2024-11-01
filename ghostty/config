@@ -1,0 +1,39 @@
+font-family = JetBrains Mono
+font-style = Regular
+font-size = 16
+font-thicken = true
+
+keybind = ctrl+\=new_split:right
+keybind = ctrl+shift+\=new_split:down
+keybind = ctrl+l=goto_split:right
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+k=goto_split:top
+keybind = ctrl+j=goto_split:bottom
+
+cursor-style = block
+cursor-style-blink = false
+
+adjust-underline-position = 40%
+adjust-underline-thickness = -60%
+
+shell-integration = bash
+shell-integration-features = no-cursor
+
+window-width = 120
+window-height = 45
+#window-padding-x = 4
+
+confirm-close-surface = false
+clipboard-paste-protection = false
+unfocused-split-opacity = 1.0
+
+theme = iTerm2 Default
+background = #111111
+foreground = #f4f4ff
+cursor-color = #ff0078
+
+selection-background = 1d3c3b
+selection-foreground = eeeeee
+
+palette = 4=#3D52E2
+palette = 12=#344CFF
