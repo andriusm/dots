@@ -5,8 +5,8 @@
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
-if [[ -f $ZDOTDIR/work_constants ]]; then
-  source $ZDOTDIR/work_constants
+if [[ -f $HOME/.config/work_zsh_constants ]]; then
+  . $HOME/.config/work_zsh_constants
 fi
 
 source $ZDOTDIR/constants
@@ -116,6 +116,6 @@ fi
 
 # eval "$(zoxide init zsh)"
 
-export PATH="$HOME/bin:$HOME/bin/wrk:$HOME/go/bin:$HOME/src/plan9port/bin:/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="$HOME/bin:$HOME/bin/wrk:$HOME/go/bin:$HOME/src/plan9port/bin:/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 # zprof

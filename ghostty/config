@@ -1,14 +1,16 @@
-font-family = JetBrains Mono
+#font-family = GoMono Nerd Font
+#font-family = Hack Nerd Font Mono
+font-family = Menlo
 font-style = Regular
 font-size = 16
 font-thicken = false
 
-keybind = ctrl+\=new_split:right
-keybind = ctrl+shift+\=new_split:down
-keybind = ctrl+l=goto_split:right
-keybind = ctrl+h=goto_split:left
-keybind = ctrl+k=goto_split:top
-keybind = ctrl+j=goto_split:bottom
+keybind = cmd+\=new_split:right
+keybind = cmd+shift+\=new_split:down
+keybind = cmd+l=goto_split:right
+keybind = cmd+h=goto_split:left
+keybind = cmd+k=goto_split:top
+keybind = cmd+j=goto_split:bottom
 
 cursor-style = block
 cursor-style-blink = false
@@ -26,8 +28,8 @@ confirm-close-surface = false
 clipboard-paste-protection = false
 unfocused-split-opacity = 1.0
 
-theme = catppuccin-latte
-#theme = Builtin Solarized Light
+#theme = catppuccin-latte
+theme = Builtin Solarized Light
 #theme = Desert
 #theme = GruvboxDark
 #theme = nord
