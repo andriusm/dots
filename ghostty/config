@@ -1,10 +1,20 @@
 #font-family = GoMono Nerd Font
 #font-family = Hack Nerd Font Mono
-font-family = Menlo
+#font-family = Menlo
+font-family = Source Code Pro
 font-style = Regular
 font-size = 16
-font-thicken = false
+font-thicken = true
 
+keybind = alt+t=new_tab
+keybind = alt+\=new_split:right
+keybind = alt+shift+\=new_split:down
+keybind = alt+l=goto_split:right
+keybind = alt+h=goto_split:left
+keybind = alt+k=goto_split:top
+keybind = alt+j=goto_split:bottom
+
+keybind = cmd+t=new_tab
 keybind = cmd+\=new_split:right
 keybind = cmd+shift+\=new_split:down
 keybind = cmd+l=goto_split:right
@@ -29,9 +39,9 @@ clipboard-paste-protection = false
 unfocused-split-opacity = 1.0
 
 #theme = catppuccin-latte
-theme = Builtin Solarized Light
+#theme = Builtin Solarized Light
 #theme = Desert
 #theme = GruvboxDark
-#theme = nord
+theme = nord
 #theme = PencilDark
 cursor-color = #ff0078
