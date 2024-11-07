@@ -19,7 +19,7 @@ export LANG=en_US.UTF-8
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 export PS1="\w $ "
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/bin/wrk:$HOME/go/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/X11/bin:$HOME/.docker/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:$HOME/bin:$PATH"
 
 shopt -s histappend
 shopt -s checkwinsize
