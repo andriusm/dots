@@ -37,11 +37,11 @@ confirm-close-surface = false
 clipboard-paste-protection = false
 unfocused-split-opacity = 0.7
 
-#theme = catppuccin-latte
+# theme = catppuccin-latte
 #theme = Builtin Solarized Light
 #theme = Desert
-theme = GruvboxDark
-#theme = nord
+# theme = GruvboxDark
+theme = nord
 #theme = PencilDark
 
 cursor-color = #ff0078
