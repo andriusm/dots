@@ -1,10 +1,12 @@
-#font-family = GoMono Nerd Font
+# font-family = GoMono Nerd Font
+# font-family = Inconsolata Nerd Font Mono
 #font-family = Hack Nerd Font Mono
-#font-family = Menlo
-font-family = Source Code Pro
+# font-family = Menlo
+font-family = Monaco
+# font-family = Source Code Pro
 font-style = Regular
-font-size = 16
-font-thicken = true
+font-size = 20
+font-thicken = false
 
 keybind = alt+t=new_tab
 keybind = alt+\=new_split:right

@@ -37,7 +37,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
-vim.cmd.colorscheme 'PaperColor'
+vim.cmd.colorscheme 'everforest'
 vim.o.background = 'dark'
 
 -- Folding
@@ -45,3 +45,6 @@ vim.o.foldmethod = 'expr'
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 20
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+
+vim.opt.colorcolumn = '100'
+vim.opt.textwidth = 100
