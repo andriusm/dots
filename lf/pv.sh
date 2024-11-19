@@ -4,6 +4,7 @@ case "$1" in
     *.tar*) tar tf "$1";;
     *.zip) unzip -l "$1";;
     *.rar) unrar l "$1";;
+    # *.mp3) ffplay "$1" ;;
     *.mp4) f="`basename \"$1\"`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" -s0 >/dev/null 2>&1 && viu -w 80 -b "$o" ;;
     *.mkv) f="`basename \"$1\"`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" -s0 >/dev/null 2>&1 && viu -w 80 -b "$o" ;;
     *.mpg) f="`basename \"$1\"`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" -s0 >/dev/null 2>&1 && viu -w 80 -b "$o" ;;
