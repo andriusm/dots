@@ -1,9 +1,24 @@
 local wezterm = require("wezterm")
 local config = {}
 
-config.font_size = 16.0
 -- config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
--- config.font_size = 16.0 -- best fit for split screen
+-- config.font = wezterm.font("DaddyTimeMono Nerd Font Mono")
+-- config.font = wezterm.font("BigBlueTermPlus Nerd Font Mono")
+-- config.font = wezterm.font("CaskaydiaCove Nerd Font Mono")
+-- config.font = wezterm.font("ComicShannsMono Nerd Font Mono")
+-- config.font = wezterm.font("GoMono Nerd Font Mono")
+-- config.font = wezterm.font("GohuFont uni11 Nerd Font Mono")
+config.font = wezterm.font("Hack Nerd Font Mono")
+-- config.font = wezterm.font("Hurmit Nerd Font Mono")
+-- config.font = wezterm.font("Iosevka Nerd Font Mono")
+-- config.font = wezterm.font("Lekton Nerd Font Mono")
+-- config.font = wezterm.font("M+1Code Nerd Font Mono")
+-- config.font = wezterm.font("Monoid Nerd Font Mono")
+-- config.font = wezterm.font("ProFont IIx Nerd Font Mono")
+-- config.font = wezterm.font("ProggyClean Nerd Font Mono")
+-- config.font = wezterm.font("ShureTechMono Nerd Font Mono")
+-- config.font = wezterm.font("SpaceMono Nerd Font Mono")
+config.font_size = 16.0 -- best fit for split screen
 
 -- config.color_scheme = 'PaleNightHC'
 -- config.color_scheme = 'PencilLight'
