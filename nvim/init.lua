@@ -8,10 +8,6 @@ require('base.nvim-cmp')
 
 require('plugins.telescope')
 require('plugins.treesitter')
-require('plugins.vim-test')
-require('plugins.git')
-require('plugins.harpoon')
-require('plugins.undotree')
 
 require('custom.ruby')
 require('custom.go')

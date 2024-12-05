@@ -53,3 +53,11 @@ function FindFileOwner()
 
     create_modal_window(modal_content)
 end
+
+function FileInfo()
+    local filename = vim.fn.expand('%')
+
+    local modal_content = { "File: " .. filename }
+
+    create_modal_window(modal_content)
+end

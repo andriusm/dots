@@ -109,12 +109,66 @@ function flipBackgroundColor()
   end
 end
 
+-- copilot plugin
+if vim.fn.exists(":Copilot") == 2 then
+  vim.keymap.set("n", "<leader>ce", ":Copilot enable<cr>")
+  vim.keymap.set("n", "<leader>cd", ":Copilot disable<cr>")
+end
+
+-- git plugin
+if vim.fn.exists(":G") == 2 then
+  vim.keymap.set("n", "<leader>gk", ":G blame<cr>")
+  vim.keymap.set("n", "<leader>gl", ":0Gclog<cr>")
+  vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit<cr>")
+end
+
+-- harpoon plugin
+
+local has_harpoon, _ = pcall(require, "harpoon")
+if has_harpoon then
+  local mark = require('harpoon.mark')
+  local ui = require('harpoon.ui')
+
+  vim.keymap.set("n", "<leader>a", mark.add_file)
+  vim.keymap.set("n", "<leader>e", ui.toggle_quick_menu)
+  vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end)
+  vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end)
+  vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end)
+  vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end)
+  vim.keymap.set("n", "<leader>5", function() ui.nav_file(5) end)
+  vim.keymap.set("n", "<leader>6", function() ui.nav_file(6) end)
+  vim.keymap.set("n", "<leader>7", function() ui.nav_file(7) end)
+  vim.keymap.set("n", "<leader>8", function() ui.nav_file(8) end)
+  vim.keymap.set("n", "<leader>9", function() ui.nav_file(9) end)
+  vim.keymap.set("n", "<leader>0", function() ui.nav_file(0) end)
+end
+
+-- undotree plugin
+
+if vim.fn.exists(":UndotreeToggle") == 2 then
+  vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+end
+
+-- vim-test plugin
+
+if vim.fn.exists(":TestFile") == 2 then
+  vim.keymap.set("n", "<leader>tn", ":TestNearest<CR>")
+  vim.keymap.set("n", "<leader>tf", ":TestFile<CR>")
+  vim.keymap.set("n", "<leader>ts", ":TestSuite<CR>")
+  vim.keymap.set("n", "<leader>tl", ":TestLast<CR>")
+  vim.keymap.set("n", "<leader>tv", ":TestVisit<CR>")
+end
+
 -- debugging
-vim.keymap.set("n", "<F5>", "<cmd>lua require('dap').continue()<cr>")
-vim.keymap.set("n", "<F7>", "<cmd>lua require('dap').step_into()<cr>")
-vim.keymap.set("n", "<F8>", "<cmd>lua require('dap').step_over()<cr>")
-vim.keymap.set("n", "<F9>", "<cmd>lua require('dap').toggle_breakpoint()<cr>")
-vim.keymap.set("n", "<F12>", "<cmd>lua require('dap').repl.toggle()<cr>")
+
+local has_dap, _ = pcall(require, "dap")
+if has_dap then
+  vim.keymap.set("n", "<F5>", "<cmd>lua require('dap').continue()<cr>")
+  vim.keymap.set("n", "<F7>", "<cmd>lua require('dap').step_into()<cr>")
+  vim.keymap.set("n", "<F8>", "<cmd>lua require('dap').step_over()<cr>")
+  vim.keymap.set("n", "<F9>", "<cmd>lua require('dap').toggle_breakpoint()<cr>")
+  vim.keymap.set("n", "<F12>", "<cmd>lua require('dap').repl.toggle()<cr>")
+end
 
 -- fzf
 vim.keymap.set('n', '<leader>gf', require('fzf-lua').git_files, { desc = 'Search [G]it [F]iles' })
@@ -130,6 +184,8 @@ vim.keymap.set('n', '<leader>sr', require('fzf-lua').resume, { desc = '[S]earch 
 vim.keymap.set('n', '<space><space>x', ':source %<CR>')
 vim.keymap.set('n', '<space>x', ':.lua<CR>')
 vim.keymap.set('v', '<space>x', ':lua<CR>')
+vim.keymap.set("n", "<leader>ce", ':lua vim.diagnostics.enable()<CR>')
+vim.keymap.set("n", "<leader>cd", ':lua vim.diagnostics.disable()<CR>')
 
 -- custom
 vim.keymap.set("n", "<leader>cc", "<cmd>lua flipBackgroundColor()<cr>")
