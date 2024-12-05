@@ -75,8 +75,6 @@ function OpenPR()
   vim.fn.system("open '" .. url .. "'")
 end
 
-vim.keymap.set("n", "<leader>go", "<cmd>lua OpenPR()<CR>")
-
 -- --------------------------------------------------------------------------------
 
 local function openFloatingWindowWithBorder()
@@ -230,6 +228,3 @@ end
 
 -- Command to call the function
 vim.api.nvim_create_user_command('ExecuteHttpRequest', execute_http_request, {})
-vim.keymap.set("n", "<localleader>w", '<cmd>ExecuteHttpRequest<CR>')
-
-

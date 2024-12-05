@@ -53,5 +53,3 @@ function FindFileOwner()
 
     create_modal_window(modal_content)
 end
-
-vim.keymap.set("n", "<leader>fo", "<cmd>lua FindFileOwner()<CR>")

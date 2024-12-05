@@ -77,14 +77,14 @@ require('lazy').setup({
   {
     'sainnhe/everforest',
     priority = 1000,
-    -- config = function()
-    --   vim.cmd.colorscheme 'everforest'
-    -- end,
+    config = function()
+      vim.cmd.colorscheme 'everforest'
+    end,
   },
 
-  { 'NLKNguyen/papercolor-theme' },
+  -- { 'NLKNguyen/papercolor-theme' },
 
-  { 'rcarriga/nvim-notify' },
+  -- { 'rcarriga/nvim-notify' },
 
   {
     'michaelrommel/nvim-silicon',

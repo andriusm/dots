@@ -103,9 +103,3 @@ function _G.grep_current_word()
     local current_word = vim.fn.expand("<cword>")
     require('telescope.builtin').live_grep({ default_text = current_word })
 end
-
-
-vim.api.nvim_set_keymap('n', '<leader>xf', ':lua grep_current_word()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>xu', ':lua urldecode_selection()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>xd', ':lua decode_base64_selection()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>xe', ':lua encode_base64_selection()<CR>', { noremap = true, silent = true })

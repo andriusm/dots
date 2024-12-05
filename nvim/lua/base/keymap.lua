@@ -116,9 +116,7 @@ vim.keymap.set("n", "<F8>", "<cmd>lua require('dap').step_over()<cr>")
 vim.keymap.set("n", "<F9>", "<cmd>lua require('dap').toggle_breakpoint()<cr>")
 vim.keymap.set("n", "<F12>", "<cmd>lua require('dap').repl.toggle()<cr>")
 
--- custom
-vim.keymap.set("n", "<leader>cc", "<cmd>lua flipBackgroundColor()<cr>")
-
+-- fzf
 vim.keymap.set('n', '<leader>gf', require('fzf-lua').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sf', require('fzf-lua').files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('fzf-lua').help_tags, { desc = '[S]earch [H]elp' })
@@ -133,3 +131,11 @@ vim.keymap.set('n', '<space><space>x', ':source %<CR>')
 vim.keymap.set('n', '<space>x', ':.lua<CR>')
 vim.keymap.set('v', '<space>x', ':lua<CR>')
 
+-- custom
+vim.keymap.set("n", "<leader>cc", "<cmd>lua flipBackgroundColor()<cr>")
+vim.keymap.set("n", "<leader>go", "<cmd>lua OpenPR()<CR>")
+vim.keymap.set("n", "<localleader>w", '<cmd>ExecuteHttpRequest<CR>')
+vim.keymap.set('n', '<leader>xf', ':lua grep_current_word()<CR>')
+vim.keymap.set('v', '<leader>xu', ':lua urldecode_selection()<CR>')
+vim.keymap.set('v', '<leader>xd', ':lua decode_base64_selection()<CR>')
+vim.keymap.set('v', '<leader>xe', ':lua encode_base64_selection()<CR>')
