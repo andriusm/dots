@@ -118,4 +118,14 @@ fi
 
 export PATH="$HOME/bin:$HOME/bin/wrk:$HOME/go/bin:/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
+# set PNPM_HOME if the directory exists
+if [ -d "/Users/andrius/Library/pnpm" ]; then
+  export PNPM_HOME="/Users/andrius/Library/pnpm"
+
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+fi
+
 # zprof

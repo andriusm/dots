@@ -17,19 +17,13 @@ local function init_my_lsp()
         print("Failed to start LSP client")
         return
     end
+
     vim.api.nvim_create_autocmd("FileType", {
         pattern = "markdown,ruby",
         callback = function()
             vim.lsp.buf_attach_client(0, client)
         end,
     })
-
-    vim.api.nvim_create_autocmd("FileType", {
-        pattern = "go",
-        callback = function()
-            vim.lsp.buf_attach_client(0, client)
-        end,
-    })
 end
 
--- init_my_lsp()
+init_my_lsp()

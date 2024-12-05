@@ -12,11 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-
-  -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
   {
@@ -24,14 +21,14 @@ require('lazy').setup({
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
+      { 'williamboman/mason-lspconfig.nvim' },
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
+      { 'folke/neodev.nvim' },
     },
   },
 
@@ -50,6 +47,29 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
+
+  -- {
+  --   'chomosuke/typst-preview.nvim',
+  --   lazy = false, -- or ft = 'typst'
+  --   version = '1.*',
+  --   config = function()
+  --     require 'typst-preview'.setup {}
+  --   end,
+  -- },
+  --
+  -- {
+  --   "jghauser/auto-pandoc.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   ft = "markdown",
+  --   keys = {
+  --     {
+  --       "go",
+  --       function() require("auto-pandoc").run_pandoc() end,
+  --       desc = 'auto-pandoc: Execute pandoc',
+  --       ft = "markdown", -- this is for buffer-local keymaps
+  --     },
+  --   }
+  -- },
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',      opts = {} },
@@ -196,22 +216,7 @@ require('lazy').setup({
 
   { 'nvim-treesitter/playground' },
 
-  --  {
-  --    'jackMort/ChatGPT.nvim',
-  --    event = "VeryLazy",
-  --    dependencies = {
-  --      'MunifTanjim/nui.nvim',
-  --      'nvim-lua/plenary.nvim',
-  --      'nvim-telescope/telescope.nvim',
-  --    },
-  --    config = function()
-  --      require('chatgpt').setup({
-  -- api_key_cmd = "echo $OPENAI_API_KEY"
-  --      })
-  --    end
-  --  },
-
-  -- non-kickstart plugins
+  -- non-kickstart plugins --------------------------------------------------------------------------------
   { 'fatih/vim-go' },
   { 'theprimeagen/harpoon' },
   { 'github/copilot.vim' },
@@ -219,6 +224,7 @@ require('lazy').setup({
   -- debugger
   {
     'mfussenegger/nvim-dap',
+    lazy = true,
     dependencies = {
       'suketa/nvim-dap-ruby',
       'leoluz/nvim-dap-go',
@@ -306,8 +312,8 @@ require('lazy').setup({
 
   { 'mbbill/undotree' },
   { 'vim-test/vim-test' },
-  { 'tpope/vim-bundler' },
-  { 'is0n/fm-nvim' },
-  { ({ 'ckipp01/nvim-jenkinsfile-linter', requires = { "nvim-lua/plenary.nvim" } }) }
 
+  -- { 'tpope/vim-bundler' },
+  -- { 'is0n/fm-nvim' },
+  -- { ({ 'ckipp01/nvim-jenkinsfile-linter', requires = { "nvim-lua/plenary.nvim" } }) }
 }, {})
