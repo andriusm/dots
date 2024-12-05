@@ -119,7 +119,6 @@ vim.keymap.set("n", "<F12>", "<cmd>lua require('dap').repl.toggle()<cr>")
 -- custom
 vim.keymap.set("n", "<leader>cc", "<cmd>lua flipBackgroundColor()<cr>")
 
-
 vim.keymap.set('n', '<leader>gf', require('fzf-lua').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sf', require('fzf-lua').files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('fzf-lua').help_tags, { desc = '[S]earch [H]elp' })
@@ -127,4 +126,10 @@ vim.keymap.set('n', '<leader>sw', require('fzf-lua').grep_cword, { desc = '[S]ea
 vim.keymap.set('n', '<leader>sg', require('fzf-lua').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('fzf-lua').diagnostics_workspace, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('fzf-lua').resume, { desc = '[S]earch [R]resume' })
+
+-- meta 
+
+vim.keymap.set('n', '<space><space>x', ':source %<CR>')
+vim.keymap.set('n', '<space>x', ':.lua<CR>')
+vim.keymap.set('v', '<space>x', ':lua<CR>')
 

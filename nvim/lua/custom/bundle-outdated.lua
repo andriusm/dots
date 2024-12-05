@@ -59,5 +59,5 @@ function BundleOutdated()
     on_exit(res)
 end
 
-vim.keymap.set("n", "<leader>x", "<cmd>lua BundleOutdated()<CR>")
+vim.keymap.set("n", "<leader>ro", "<cmd>lua BundleOutdated()<CR>")
 
