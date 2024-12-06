@@ -6,8 +6,8 @@ require('base.misc')
 require('base.lsp')
 require('base.nvim-cmp')
 
-require('plugins.telescope')
-require('plugins.treesitter')
+require('plugins_prev.telescope')
+require('plugins_prev.treesitter')
 
 require('custom.ruby')
 require('custom.go')

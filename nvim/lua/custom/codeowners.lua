@@ -4,7 +4,7 @@ local function create_modal_window(text)
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, text)
 
     local width = 1
-    local height = 10
+    local height = #text
 
     for i = 1, #text do
         if #text[i] > width then
