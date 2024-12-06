@@ -61,3 +61,10 @@ function FileInfo()
 
     create_modal_window(modal_content)
 end
+
+function RunCurrentLine()
+  local current_line = vim.api.nvim_get_current_line()
+  -- vim.cmd("!" .. current_line)
+  local output = vim.fn.systemlist({ "zsh", "-c", current_line })
+  create_modal_window(output)
+end

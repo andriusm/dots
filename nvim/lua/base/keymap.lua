@@ -25,8 +25,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- older keymap
 
-vim.keymap.set("n", "<leader>ve", ":edit $HOME/.config/nvim/lua/base/init.lua<CR>")
+vim.keymap.set("n", "<leader>ve", ":edit $HOME/.config/nvim/init.lua<CR>")
+vim.keymap.set("n", "<leader>vl", ":edit $HOME/.config/lf/lfrc<CR>")
 vim.keymap.set("n", "<leader>vw", ":edit $HOME/.config/wezterm/wezterm.lua<CR>")
+vim.keymap.set("n", "<leader>vz", ":edit $HOME/.config/zsh/.zshrc<CR>")
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", ";", ":")
@@ -57,7 +59,7 @@ vim.keymap.set("n", "Q", "<nop>")
 -- ??
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
-vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+-- vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
@@ -69,7 +71,7 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-\\>", ":vsplit<CR>")
 vim.keymap.set("n", "gf", ":edit <cfile><cr>")
 
-vim.keymap.set("n", "<leader>vr", ":source ~/.config/nvim/init.lua<cr>")
+vim.keymap.set("n", "<leader>vr", ":source $HOME/.config/nvim/init.lua<cr>")
 
 vim.keymap.set("n", "<leader>k", ":nohlsearch<CR>")
 vim.keymap.set("n", "<leader>q", ":bdelete<CR>")
@@ -186,6 +188,7 @@ vim.keymap.set('n', '<space>x', ':.lua<CR>')
 vim.keymap.set('v', '<space>x', ':lua<CR>')
 vim.keymap.set("n", "<leader>ce", ':lua vim.diagnostics.enable()<CR>')
 vim.keymap.set("n", "<leader>cd", ':lua vim.diagnostics.disable()<CR>')
+vim.keymap.set("n", "<space>z",  ":lua RunCurrentLine()<CR>")
 
 -- custom
 vim.keymap.set("n", "<leader>cc", "<cmd>lua flipBackgroundColor()<cr>")
