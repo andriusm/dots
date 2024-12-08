@@ -186,8 +186,8 @@ vim.keymap.set('n', '<leader>sr', require('fzf-lua').resume, { desc = '[S]earch 
 vim.keymap.set('n', '<space><space>x', ':source %<CR>')
 vim.keymap.set('n', '<space>x', ':.lua<CR>')
 vim.keymap.set('v', '<space>x', ':lua<CR>')
-vim.keymap.set("n", "<leader>ce", ':lua vim.diagnostics.enable()<CR>')
-vim.keymap.set("n", "<leader>cd", ':lua vim.diagnostics.disable()<CR>')
+vim.keymap.set("n", "<leader>de", ':lua vim.diagnostics.enable()<CR>')
+vim.keymap.set("n", "<leader>dd", ':lua vim.diagnostics.disable()<CR>')
 vim.keymap.set("n", "<space>z",  ":lua RunCurrentLine()<CR>")
 
 -- custom
