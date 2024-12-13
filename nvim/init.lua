@@ -15,3 +15,7 @@ require('custom.lsp')
 require('custom.utils')
 require('custom.experiments')
 require('custom.codeowners')
+
+if vim.loop.fs_stat(vim.fn.expand("~/.config/nvim/lua/custom/work.lua")) then
+	require('custom.work')
+end

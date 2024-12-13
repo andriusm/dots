@@ -1,4 +1,5 @@
 nvim/lazy-lock.json
+nvim/lua/custom/work.lua
 zsh/.zsh_history
 zsh/.zcompdump
 zsh/.zcompcache

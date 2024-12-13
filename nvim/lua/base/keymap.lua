@@ -30,7 +30,6 @@ vim.keymap.set("n", "<leader>vl", ":edit $HOME/.config/lf/lfrc<CR>")
 vim.keymap.set("n", "<leader>vw", ":edit $HOME/.config/wezterm/wezterm.lua<CR>")
 vim.keymap.set("n", "<leader>vz", ":edit $HOME/.config/zsh/.zshrc<CR>")
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", ";", ":")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -50,9 +49,7 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
-vim.keymap.set("n", "<leader>fm", function()
-  vim.lsp.buf.format()
-end)
+vim.keymap.set("n", "<leader>fm", function() vim.lsp.buf.format() end)
 
 vim.keymap.set("n", "Q", "<nop>")
 
@@ -77,10 +74,6 @@ vim.keymap.set("n", "<leader>k", ":nohlsearch<CR>")
 vim.keymap.set("n", "<leader>q", ":bdelete<CR>")
 
 vim.keymap.set("n", "<leader>T", ":vsplit | terminal<CR>i")
-
-vim.keymap.set("n", "<F4>", function()
-  vim.cmd(':Ex ' .. vim.fn.getcwd())
-end)
 
 -- fm-nvim
 --vim.keymap.set("n", "-", ":Lf<CR>")
@@ -173,10 +166,11 @@ if has_dap then
 end
 
 -- fzf
-vim.keymap.set('n', '<leader>gf', require('fzf-lua').git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set('n', '<leader>sj', require('fzf-lua').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sf', require('fzf-lua').files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('fzf-lua').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('fzf-lua').grep_cword, { desc = '[S]earch current [W]ord' })
+-- vim.keymap.set('n', '<leader>sw', require('fzf-lua').grep_cword, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>sw', ':lua grep_current_word()<CR>')
 vim.keymap.set('n', '<leader>sg', require('fzf-lua').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('fzf-lua').diagnostics_workspace, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('fzf-lua').resume, { desc = '[S]earch [R]resume' })
@@ -184,17 +178,19 @@ vim.keymap.set('n', '<leader>sr', require('fzf-lua').resume, { desc = '[S]earch 
 -- meta 
 
 vim.keymap.set('n', '<space><space>x', ':source %<CR>')
-vim.keymap.set('n', '<space>x', ':.lua<CR>')
-vim.keymap.set('v', '<space>x', ':lua<CR>')
+vim.keymap.set('n', '<space>xx', ':.lua<CR>')
+vim.keymap.set('v', '<space>xx', ':lua<CR>')
 vim.keymap.set("n", "<leader>de", ':lua vim.diagnostics.enable()<CR>')
 vim.keymap.set("n", "<leader>dd", ':lua vim.diagnostics.disable()<CR>')
 vim.keymap.set("n", "<space>z",  ":lua RunCurrentLine()<CR>")
 
 -- custom
-vim.keymap.set("n", "<leader>cc", "<cmd>lua flipBackgroundColor()<cr>")
-vim.keymap.set("n", "<leader>go", "<cmd>lua OpenPR()<CR>")
 vim.keymap.set("n", "<localleader>w", '<cmd>ExecuteHttpRequest<CR>')
-vim.keymap.set('n', '<leader>xf', ':lua grep_current_word()<CR>')
+vim.keymap.set("n", "<leader>xc", "<cmd>lua flipBackgroundColor()<cr>")
+vim.keymap.set("n", "<leader>xo", "<cmd>lua OpenPR()<CR>")
 vim.keymap.set('v', '<leader>xu', ':lua urldecode_selection()<CR>')
 vim.keymap.set('v', '<leader>xd', ':lua decode_base64_selection()<CR>')
 vim.keymap.set('v', '<leader>xe', ':lua encode_base64_selection()<CR>')
+vim.keymap.set("n", "<leader>xl", "<cmd>lua OpenKibanaLogs()<CR>")
+vim.keymap.set("n", "<leader>xf", "<cmd>lua OpenFeature()<CR>")
+vim.keymap.set("n", "<leader>xr", "<cmd>lua CoreRevision()<CR>")
