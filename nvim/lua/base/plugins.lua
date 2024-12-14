@@ -28,26 +28,4 @@ require('lazy').setup({
   { 'nvim-treesitter/playground' },
   { 'theHamsta/nvim-dap-virtual-text' },
   { 'nvim-telescope/telescope-dap.nvim' },
-  {
-    'sainnhe/everforest',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'everforest'
-    end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ':TSUpdate',
-  },
-
-
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
-  },
 }, {})

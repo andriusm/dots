@@ -8,7 +8,7 @@ local config = {}
 -- config.font = wezterm.font("ComicShannsMono Nerd Font Mono")
 -- config.font = wezterm.font("GoMono Nerd Font Mono")
 -- config.font = wezterm.font("GohuFont uni11 Nerd Font Mono")
-config.font = wezterm.font("Hack Nerd Font Mono")
+-- config.font = wezterm.font("Hack Nerd2 Font Mono")
 -- config.font = wezterm.font("Hurmit Nerd Font Mono")
 -- config.font = wezterm.font("Iosevka Nerd Font Mono")
 -- config.font = wezterm.font("Lekton Nerd Font Mono")
@@ -18,6 +18,10 @@ config.font = wezterm.font("Hack Nerd Font Mono")
 -- config.font = wezterm.font("ProggyClean Nerd Font Mono")
 -- config.font = wezterm.font("ShureTechMono Nerd Font Mono")
 -- config.font = wezterm.font("SpaceMono Nerd Font Mono")
+config.font = wezterm.font_with_fallback({
+	"GoMono Nerd Font Mono",
+	"JetBrains Mono",
+})
 config.font_size = 16.0 -- best fit for split screen
 
 -- config.color_scheme = 'PaleNightHC'
