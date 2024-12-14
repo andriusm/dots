@@ -9,9 +9,15 @@ return {
 			cond = function()
 				return vim.fn.executable 'make' == 1
 			end,
-			config = function()
-				print("telescope")
-			end,
 		},
 	},
+	config = function()
+		require('telescope').setup {
+			pickers = {
+				find_files = {
+					-- theme = 'ivy',
+				},
+			}
+		}
+	end,
 }
