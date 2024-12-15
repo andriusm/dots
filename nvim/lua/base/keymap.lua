@@ -96,7 +96,7 @@ vim.api.nvim_set_hl(0, 'CopilotSuggestion', {
 })
 
 -- colors
-function flipBackgroundColor()
+function FlipBackgroundColor()
   if vim.o.background == "dark" then
     vim.o.background = "light"
   else
@@ -226,9 +226,13 @@ vim.keymap.set("n", "<leader>de", ':lua vim.diagnostics.enable()<CR>')
 vim.keymap.set("n", "<leader>dd", ':lua vim.diagnostics.disable()<CR>')
 vim.keymap.set("n", "<space>z",  ":lua RunCurrentLine()<CR>")
 
+-- quickfix
+vim.keymap.set("n", "<leader>j", ":cnext<CR>")
+vim.keymap.set("n", "<leader>k", ":cprev<CR>")
+
 -- custom
 vim.keymap.set("n", "<localleader>w", '<cmd>ExecuteHttpRequest<CR>')
-vim.keymap.set("n", "<leader>xc", "<cmd>lua flipBackgroundColor()<cr>")
+vim.keymap.set("n", "<leader>xc", "<cmd>lua FlipBackgroundColor()<cr>")
 vim.keymap.set("n", "<leader>xo", "<cmd>lua OpenPR()<CR>")
 vim.keymap.set('v', '<leader>xu', ':lua urldecode_selection()<CR>')
 vim.keymap.set('v', '<leader>xd', ':lua decode_base64_selection()<CR>')
