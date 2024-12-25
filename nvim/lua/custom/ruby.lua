@@ -140,7 +140,13 @@ function BundleOutdated()
             if gem then
                 if outdated[gem] ~= nil then
                     local msg = " 💎 " .. outdated[gem]
-                    vim.api.nvim_buf_set_virtual_text(bufnr, ns_id, line_num, { { msg, "MyErrorHighlight" } }, {})
+                    -- vim.api.nvim_buf_set_virtual_text(bufnr, ns_id, line_num, { { msg, "MyErrorHighlight" } }, {})
+
+            local opts = {
+                        virt_text = { { msg, "Error" } },
+                        virt_text_pos = "eol",
+                    }
+                    vim.api.nvim_buf_set_extmark(bufnr, ns_id, line_num, 1, {virt_text = { { msg, "Error" } }})
                 end
             end
 

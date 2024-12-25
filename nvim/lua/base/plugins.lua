@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   { import = "plugins" },
 
+  { 'andriusm/toolbox.nvim' },
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-rhubarb' },
   { 'tpope/vim-sleuth' },
