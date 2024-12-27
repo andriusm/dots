@@ -95,15 +95,6 @@ vim.api.nvim_set_hl(0, 'CopilotSuggestion', {
   ctermfg = 8,
 })
 
--- colors
-function FlipBackgroundColor()
-  if vim.o.background == "dark" then
-    vim.o.background = "light"
-  else
-    vim.o.background = "dark"
-  end
-end
-
 -- copilot plugin
 if vim.fn.exists(":Copilot") == 2 then
   vim.keymap.set("n", "<leader>ce", ":Copilot enable<cr>")
@@ -238,12 +229,22 @@ vim.keymap.set("n", "<leader>j", ":cnext<CR>")
 vim.keymap.set("n", "<leader>k", ":cprev<CR>")
 
 -- custom
+vim.keymap.set('n', '<leader>fi', require('toolbox').file_info)
+
 vim.keymap.set('v', '<leader>xd', ':lua decode_base64_selection()<CR>')
 vim.keymap.set('v', '<leader>xe', ':lua encode_base64_selection()<CR>')
-vim.keymap.set("n", "<localleader>w", '<cmd>ExecuteHttpRequest<CR>')
-vim.keymap.set("n", "<leader>xc", "<cmd>lua FlipBackgroundColor()<cr>")
-vim.keymap.set("n", "<leader>xo", require('toolbox.git').find_pr_of_current_line)
 vim.keymap.set('v', '<leader>xu', ':lua urldecode_selection()<CR>')
+
+vim.keymap.set("n", "<leader>xc", function()
+  if vim.o.background == "dark" then
+    vim.o.background = "light"
+  else
+    vim.o.background = "dark"
+  end
+end)
+vim.keymap.set("n", "<leader>xo", require('toolbox.git').find_pr_of_current_line)
+
+vim.keymap.set("n", "<localleader>w", '<cmd>ExecuteHttpRequest<CR>')
 vim.keymap.set("n", "<leader>xl", "<cmd>lua OpenKibanaLogs()<CR>")
 vim.keymap.set("n", "<leader>xf", "<cmd>lua OpenFeature()<CR>")
 vim.keymap.set("n", "<leader>xr", "<cmd>lua CoreRevision()<CR>")
