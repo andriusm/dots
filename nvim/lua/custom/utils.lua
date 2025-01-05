@@ -7,6 +7,8 @@
 --     return str
 -- end
 
+local M = {}
+
 function _G.urldecode_selection()
     local start_pos = vim.api.nvim_buf_get_mark(0, '<')
     local end_pos = vim.api.nvim_buf_get_mark(0, '>')
@@ -47,7 +49,7 @@ local function base64_decode(data)
 end
 
 local function base64_encode(data)
-    return ((data:gsub('.', function(x) 
+    return ((data:gsub('.', function(x)
         local r, b = '', x:byte()
         for i = 8, 1, -1 do r = r .. (b % 2^i - b % 2^(i - 1) > 0 and '1' or '0') end
         return r;
@@ -59,8 +61,7 @@ local function base64_encode(data)
     end)..({ '', '==', '=' })[#data % 3 + 1])
 end
 
--- Function to encode selected text in Neovim
-function _G.encode_base64_selection()
+local function get_selection_text()
     local start_pos = vim.api.nvim_buf_get_mark(0, '<')
     local end_pos = vim.api.nvim_buf_get_mark(0, '>')
     local lines = vim.api.nvim_buf_get_lines(0, start_pos[1] - 1, end_pos[1], false)
@@ -68,14 +69,26 @@ function _G.encode_base64_selection()
     if #lines == 0 then return end
 
     local text = table.concat(lines, '\n')
-    text = base64_encode(text)
+    return text
+end
 
-    local encoded_lines = {}
+local function write_text_to_selection(text)
+    local start_pos = vim.api.nvim_buf_get_mark(0, '<')
+    local end_pos = vim.api.nvim_buf_get_mark(0, '>')
+    local new_lines = {}
+
     for line in text:gmatch("([^\n]*)\n?") do
-        table.insert(encoded_lines, line)
+        table.insert(new_lines, line)
     end
 
-    vim.api.nvim_buf_set_lines(0, start_pos[1] - 1, end_pos[1], false, encoded_lines)
+    vim.api.nvim_buf_set_lines(0, start_pos[1] - 1, end_pos[1], false, new_lines)
+end
+
+-- Function to encode selected text in Neovim
+function _G.encode_base64_selection()
+    local input = get_selection_text()
+    local output = base64_encode(input)
+    write_text_to_selection(output)
 end
 
 -- Function to decode selected text in Neovim
@@ -96,3 +109,5 @@ function _G.decode_base64_selection()
 
     vim.api.nvim_buf_set_lines(0, start_pos[1] - 1, end_pos[1], false, decoded_lines)
 end
+
+return M
