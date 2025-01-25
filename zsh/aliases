@@ -15,6 +15,8 @@ alias l='ls -Fh'
 alias ll='ls -lFh'
 alias la='ls -laFh'
 
+alias nn='newsboat'
+
 alias doro='timer 30m && notif "Work timer is up" "Take a break"'
 alias gpl='gh pr list'
 alias gpc='gh pr checkout'
