@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+BLOG_DIR="$HOME/1_main/src/blog17"
+
+pushd "$BLOG_DIR" >/dev/null 2>&1 || exit
+git stash
+git pull
+git push
+popd >/dev/null 2>&1 || exit

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+BLOG_DIR="$HOME/1_main/src/blog17"
+POSTS_DIR="$BLOG_DIR/content/posts"
+SELECTED_FILE=$(ls "$POSTS_DIR" | fzf)
+
+if [ -z "$SELECTED_FILE" ]; then
+    echo "No file selected. Exiting."
+    exit 0
+fi
+
+pushd "$BLOG_DIR" >/dev/null 2>&1 || exit
+git stash
+git pull
+
+rm "$POSTS_DIR/$SELECTED_FILE"
+
+git add "$POSTS_DIR"
+git commit -m "Remove post: $SELECTED_FILE"
+popd >/dev/null 2>&1 || exit

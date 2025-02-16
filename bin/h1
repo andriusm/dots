@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+O="open"
+BLOG_DIR="$HOME/1_main/src/blog17"
+
+if command -v xdg-open &>/dev/null; then
+    O="xdg-open"
+fi
+
+pushd "$BLOG_DIR" >/dev/null 2>&1 || exit
+sleep 1 && $O http://localhost:1313 &
+hugo --ignoreCache -F serve -d public 
+popd >/dev/null 2>&1 || exit
