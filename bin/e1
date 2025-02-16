@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e
+
+O="open"
+BLOG_DIR="$HOME/1_main/src/blog17"
+POSTS_DIR="$BLOG_DIR/content/posts"
+SELECTED_FILE=$(ls "$POSTS_DIR" | fzf)
+
+if [ -z "$SELECTED_FILE" ]; then
+    echo "No file selected. Exiting."
+    exit 0
+fi
+
+if command -v xdg-open &>/dev/null; then
+    O="xdg-open"
+fi
+
+pushd "$BLOG_DIR" >/dev/null 2>&1 || exit
+git stash
+git pull
+
+hugo --ignoreCache -F serve -d public -w > /dev/null 2>&1 &
+$O http://localhost:1313 &
+nvim "$POSTS_DIR/$SELECTED_FILE"
+
+git add "$POSTS_DIR"
+git commit -m "Edit post: $SELECTED_FILE"
+popd >/dev/null 2>&1 || exit
+
+pkill -9 hugo
