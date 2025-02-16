@@ -116,7 +116,7 @@ fi
 
 # eval "$(zoxide init zsh)"
 
-export PATH="$HOME/bin:$HOME/bin/wrk:$HOME/go/bin:/opt/homebrew/opt/openjdk@21/bin:$PATH"
+export PATH="$HOME/bin:$HOME/bin/ext:$HOME/bin/wrk:$HOME/go/bin:/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 # set PNPM_HOME if the directory exists
 if [ -d "/Users/andrius/Library/pnpm" ]; then

@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -e
+
+TEMPFILE=$(mktemp /tmp/tempfile."$(date +%s)".md)
+BLOG_DIR="$HOME/1_main/src/blog17"
+POSTS_DIR="$BLOG_DIR/content/posts"
+
+cat > "$TEMPFILE" <<EOF
++++
+title = 'Post Title'
+date = $(date '+%Y-%m-%dT%H:%M:%S%z' | sed -E 's/(\+|-)([0-9]{2})([0-9]{2})/\1\2:\3/')
+author = "Andrius"
+description = 'Short post description'
+cover.image = "https://i.pinimg.com/originals/43/db/46/43db4682a57bbddf864719d9403919eb.jpg"
+
+tags = ["bash"]
+categories = ["TIL"]
++++
+EOF
+
+nvim "$TEMPFILE"
+
+# Extract title and convert it to desired filename format
+TITLE=$(grep '^title =' "$TEMPFILE" | sed -E "s/title = '(.+)'/\1/" | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
+DATETIME_PREFIX=$(date '+%Y-%m-%d_%H-%M-%S')
+NEW_FILENAME="${DATETIME_PREFIX}_${TITLE}.md"
+
+pushd "$BLOG_DIR" >/dev/null 2>&1 || exit
+git stash
+git pull
+mv "$TEMPFILE" "$POSTS_DIR/$NEW_FILENAME"
+git add "$POSTS_DIR"
+git commit -m "Add new post: $NEW_FILENAME"
+popd >/dev/null 2>&1 || exit
