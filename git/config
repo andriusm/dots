@@ -42,6 +42,7 @@
 	ctags = !.git/hooks/ctags
 	spull = svn rebase
 	spush = svn dcommit
+	diff = diff -w
 [format]
 	pretty = format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
 [core]
@@ -53,10 +54,11 @@
 	commitGraph = true
 	pager = delta
 [diff]
-	guitool = kdiff3
+	guitool = diffmerge
 [merge]
-	tool = kdiff3
-	conflictstyle = diff3
+	tool = diffmerge
+	; tool = kdiff3
+	; conflictstyle = diff3
 [credential]
 [apply]
 	whitespace = nowarn

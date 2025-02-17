@@ -6,6 +6,7 @@ require('base.misc')
 require('base.lsp')
 require('base.nvim-cmp')
 
+require('custom.markdown')
 require('custom.todo')
 require('custom.ruby')
 require('custom.go')
