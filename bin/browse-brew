@@ -1,12 +1,15 @@
 #!/bin/bash
 
-FORMULA_FILE=$(mktemp)
+INFO_FILE="/tmp/all_brew_info.json"
 
-echo "Fetching brew info..."
-ALL_INFO=$(brew info --eval-all --json 2>/dev/null)
-echo "Transforming brew info..."
-echo "$ALL_INFO" | jq '[.[] | {name, desc, homepage, build_dependencies}]' > "$FORMULA_FILE"
+if [[ -e "$INFO_FILE" && $(find "$INFO_FILE" -mmin -120) ]]; then
+    echo "Using cached brew info..."
+else
+    echo "Fetching brew info..."
+    ALL_INFO=$(brew info --eval-all --json 2>/dev/null)
 
-# brew info --eval-all --json | jq '[.[] | {name, desc, homepage, build_dependencies}]' > "$FORMULA_FILE" 2>/dev/null
+    echo "Transforming brew info..."
+    echo "$ALL_INFO" | jq '[.[] | {name, desc, homepage, build_dependencies}]' > "$INFO_FILE"
+fi
 
-jq '.[].name' "$FORMULA_FILE" | fzf --preview="jq -r '.[] | select(.name == \"{}\") | \"\(.desc)\n\(.license)\n\(.homepage)\n\(.build_dependencies)\"' $FORMULA_FILE"
+jq '.[].name' "$INFO_FILE" | fzf --preview="jq -r '.[] | select(.name == \"{}\") | \"\(.desc)\n\(.license)\n\(.homepage)\n\(.build_dependencies)\"' $INFO_FILE"

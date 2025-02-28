@@ -1,0 +1,18 @@
+#!/bin/bash
+
+INFO_FILE="/tmp/all_brew_info.json"
+GO_INFO_FILE="/tmp/go_brew_info.json"
+
+if [[ -e "$INFO_FILE" && $(find "$INFO_FILE" -mmin -120) ]]; then
+    echo "Using cached brew info..."
+    # jq '[.[] | select(.build_dependencies[] | contains("go"))]' "$INFO_FILE" > "$GO_INFO_FILE"
+    jq '[.[] | select(any(.build_dependencies[]; . == "go"))]' "$INFO_FILE" > "$GO_INFO_FILE"
+else
+    echo "Fetching brew info..."
+    ALL_INFO=$(brew info --eval-all --json 2>/dev/null)
+
+    echo "Transforming brew info..."
+    echo "$ALL_INFO" | jq '[.[] | {name, desc, homepage, build_dependencies}]' > "$INFO_FILE"
+fi
+
+jq '.[].name' "$GO_INFO_FILE" | fzf --preview="jq -r '.[] | select(.name == \"{}\") | \"\(.desc)\n\(.license)\n\(.homepage)\n\(.build_dependencies)\"' $GO_INFO_FILE"
