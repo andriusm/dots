@@ -1,5 +1,8 @@
 local M = {}
 
+vim.wo.colorcolumn = "80"
+vim.o.textwidth = 80
+
 function M.follow_link()
     local _, col = unpack(vim.api.nvim_win_get_cursor(0))
 

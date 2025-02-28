@@ -81,3 +81,5 @@ alias pf="la | rev | cut -d ' ' -f1 | rev | grep '^\.' | grep -v '/$'"
 alias pd="la | rev | cut -d ' ' -f1 | rev | grep '^\.' | grep '/$'"
 
 alias yt="YTFZF_PREF=22 ytfzf -t"
+
+alias ji='jira issue list --created month -a$(jira me)'
