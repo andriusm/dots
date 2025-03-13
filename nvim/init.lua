@@ -11,6 +11,7 @@ require('custom.todo')
 require('custom.ruby')
 require('custom.go')
 require('custom.lsp')
+require('custom.adoc')
 require('custom.utils')
 require('custom.experiments')
 

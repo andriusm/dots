@@ -1,3 +1,7 @@
+vim.opt.tabstop = 4
+vim.opt.colorcolumn = '120'
+vim.opt.textwidth = 120
+
 vim.keymap.set("n", "<localleader>x", '<cmd>lua DbMigrate()<CR>')
 vim.keymap.set("n", "<localleader>c", '<cmd>lua BundleInstall()<CR>')
 vim.keymap.set("n", "<localleader>j", '<cmd>lua AltRubyFile()<CR>')

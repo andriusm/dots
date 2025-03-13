@@ -1,0 +1,86 @@
+= Document Title
+Doc Writer <doc.writer@asciidoctor.org>
+v1.0, 2025-08-01
+:doctype: article
+:home: /Users/andrius
+:imgdir: {home}/Pictures
+:toc: left
+
+// ----------------------------------------------------------------------------
+
+== Introduction
+
+This is the introduction section of the document.
+
+=== Lists
+
+* first thing
+  ** second
+  ** third
+* second thing
+  ** sub item
+
+--
+. another list
+  .. sub item
+--
+
+=== Tables
+
+[cols="20,30,50"]
+|===
+| Header 1 | Header 2 | Header 3
+| Row 1, Col 1 | Row 1, Col 2 | Row 1, Col 3
+| Row 2, Col 1 | Row 2, Col 2 | Row 2, Col 3
+| Row 3, Col 1 | Row 3, Col 2 | Row 3, Col 3
+|===
+
+=== Checklists
+
+* [x] checked
+* [ ] not checked
+
+=== Images and links
+
+image:{imgdir}/code.png[Alt text, width=75%]
+
+- https://asciidoctor.org - automatic!
+- https://github.com/asciidoctor[Asciidoctor @ *GitHub*]
+- link:https://example.com[Example Website, window="_blank"]
+
+=== Quotes and such
+
+[quote, source="Author"]
+__This is a blockquote__
+
+[NOTE]
+This is a note block.
+
+[WARNING]
+This is a warning message.
+
+[sidebar]
+This is a sidebar.
+
+=== Code
+
+[source,python]
+----
+def hello_world():
+    print("Hello, world!")
+----
+
+=== Glossary
+
+[description]
+Term 1:: Definition of term 1
+Term 2:: Definition of term 2
+
+// page break
+<<<
+
+== Another Section
+
+Content for this section goes here.
+
+(C) (R) (TM) -- ... -> <- => <= &#182;
