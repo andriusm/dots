@@ -17,7 +17,8 @@ set icons true
 
 cmd open ${{
   case $(file --mime-type "$f" -bL) in text/*|application/json) $EDITOR "$fx";;
-    video/*|application/pdf) mpv "$f" >/dev/null 2>&1 & ;;
+    application/pdf) mpv "$f" >/dev/null 2>&1 & ;;
+    video/*) ffplay "$f" >/dev/null 2>&1 ;;
     audio/*) ffplay "$f" >/dev/null 2>&1 ;;
     image/svg+xml) open "$f" && echo "Press Enter to continue" && read ;;
     image/*) viu "$f" && echo "Press Enter to continue" && read ;;
@@ -65,6 +66,9 @@ map ei $sxiv -frs f "$f"
 map ep $mpv "$f"
 
 map u &notify-send "$fx"
+
+map c
+map c3 $ffmpeg -hide_banner -i "$f" "$f.mp3"
 
 map f
 map ff $fzf | xargs sh -c 'nvim "$@" < /dev/tty' nvim
