@@ -191,6 +191,6 @@ function M.test1()
   utils.create_modal_window(output)
 end
 
-vim.keymap.set("n", "<leader>1", M.test1)
+vim.keymap.set("n", "<leader>t1", M.test1)
 
 return M

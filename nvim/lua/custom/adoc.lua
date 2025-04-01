@@ -1,3 +1,11 @@
+vim.keymap.set('n', '<leader>ar', ":!asciidoctor-pdf -r asciidoctor-diagram %<CR>")
+vim.keymap.set('n', '<leader>ao',
+  function()
+    local file = vim.fn.expand("%:t:r") .. ".pdf"
+    vim.cmd("!open " .. file)
+  end
+)
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "asciidoc",
   callback = function()

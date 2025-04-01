@@ -53,9 +53,9 @@
 	commitGraph = true
 	pager = delta
 [diff]
-	guitool = "$DIFFTOOL"
+	guitool = kdiff3
 [merge]
-	tool = "$DIFFTOOL"
+	tool = kdiff3
 	conflictstyle = diff3
 [credential]
 [apply]
