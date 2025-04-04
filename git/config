@@ -91,3 +91,5 @@
 	sslCAinfo = /etc/ssl/certs/ca-certificates.crt
 
 # vim:ft=gitconfig
+[url "git@github.com:"]
+	insteadOf = https://github.com/
