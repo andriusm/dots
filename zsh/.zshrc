@@ -139,7 +139,9 @@ fi
 # dev-tools
 # --------------------------------------------------------------------------------
 
-source "${DEVTOOLS_PATH:-$HOME/vinted/dev-tools}/bin/shell_function.sh"
+if [ -f "${DEVTOOLS_PATH:-$HOME/vinted/dev-tools}/bin/shell_function.sh" ]; then
+  source "${DEVTOOLS_PATH:-$HOME/vinted/dev-tools}/bin/shell_function.sh"
+fi
 
 # --------------------------------------------------------------------------------
 # mise
