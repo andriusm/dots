@@ -38,8 +38,10 @@ alias fix='bundle exec rubocop -x `git diff-tree --no-commit-id --name-only -r o
 alias mg='bundle exec rake db:migrate'
 alias xdocker='DOCKER_DEFAULT_PLATFORM=linux/amd64 docker'
 alias ag='ag --hidden'
+alias rg='rg --hidden'
 alias fd='fd -ui'
 alias vim='nvim'
+alias gdu='gdu-go'
 
 alias ff='find ~/Documents -type f | fzf | nvim'
 alias ee='fzf | nvim'
