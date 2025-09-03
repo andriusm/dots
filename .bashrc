@@ -72,3 +72,9 @@ source "${DEV_TOOLS_DIR}/bin/shell_function.sh"
 source $HOME/.docker/init-bash.sh || true # Added by Docker Desktop
 
 DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/andrejus/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+source "${DEVTOOLS_PATH:-$HOME/vinted/dev-tools}/bin/shell_function.sh"

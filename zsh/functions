@@ -21,7 +21,7 @@ function current_branch() {
 }
 
 function pro() {
-	hub pull-request -o -m "$(git l --format="%s" -1 | sed 's/^\* //;s/ (#[0-9]*)$//')" -m "$1" -m "$2"
+	gh pr create --title "$(git log -1 --pretty=format:"%s" | sed 's/^\* //;s/ (#[0-9]*)$//')" --body "$1"$'\n'$'\n'"$2"
 }
 
 function draft() {
