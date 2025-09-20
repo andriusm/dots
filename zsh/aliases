@@ -82,4 +82,4 @@ alias yt="YTFZF_PREF=22 ytfzf -t"
 
 alias ji='jira issue list --created month -a$(jira me)'
 
-alias j='sel=$(find $HOME/vinted -mindepth 1 -maxdepth 1 -type d | rev | cut -d '/' -f1 | rev | fzf) && cd "$HOME/vinted/$sel"'
+# alias j='sel=$(find $HOME/vinted -mindepth 1 -maxdepth 1 -type d | rev | cut -d '/' -f1 | rev | fzf) && cd "$HOME/vinted/$sel"'

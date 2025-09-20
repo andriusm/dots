@@ -41,6 +41,7 @@ setopt HIST_REDUCE_BLANKS
 
 bindkey -e
 bindkey '^R' history-incremental-search-backward
+bindkey "^[[3~" delete-char
 
 #   [[ -f /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 #   [[ -f /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme ]] && . /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme

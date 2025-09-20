@@ -8,6 +8,8 @@ font-style = Regular
 font-size = 20
 font-thicken = false
 
+keybind = alt+a=unbind
+keybind = alt+l=unbind
 keybind = alt+t=new_tab
 keybind = alt+\=new_split:right
 keybind = alt+shift+\=new_split:down
