@@ -1,0 +1,23 @@
+#!/bin/bash
+
+sel=$(date +%Y-%m-%d)
+DIR="$HOME/1_main/misc/$sel"
+mkdir -p "$DIR"
+
+tmux list-sessions | grep -q "^$sel:"
+if [ $? -eq 0 ]; then
+	if [ -n "$TMUX" ]; then
+		tmux switch-client -t "$sel"
+	else
+		tmux attach-session -t "$sel"
+	fi
+else
+	if [ -n "$TMUX" ]; then
+		tmux new-session -d -c "$DIR" -s "$sel"
+		tmux switch-client -t "$sel"
+	else
+		tmux new-session -c "$DIR" -s "$sel"
+	fi
+fi
+
+
