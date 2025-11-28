@@ -1,0 +1,11 @@
+nvim/lazy-lock.json
+nvim/lua/custom/work.lua
+zsh/.zsh_history
+zsh/.zcompdump
+zsh/.zcompcache
+zsh/.zsh_sessions
+btop/btop.log
+newsboat/cache.db
+localnotes/
+**/.claude/settings.local.json
+localnotes

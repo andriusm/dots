@@ -48,10 +48,11 @@
 	editor = nvim
 	autocrlf = input
 	safecrlf = false
-	excludesfile = "$HOME/.config/git/global_ignore"
+	excludesfile = ~/.config/git/global_ignore
 	quotepath = false
 	commitGraph = true
 	pager = delta
+	ignoreCase = true
 [diff]
 	guitool = kdiff3
 [merge]

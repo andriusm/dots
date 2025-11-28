@@ -47,3 +47,4 @@ theme = nord
 #theme = PencilDark
 
 cursor-color = #ff0078
+keybind = shift+enter=text:\x1b\r
