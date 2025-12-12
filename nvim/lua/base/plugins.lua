@@ -19,6 +19,7 @@ require('lazy').setup({
   { 'tpope/vim-rhubarb' },
   { 'tpope/vim-sleuth' },
   { 'tpope/vim-bundler' },
+  { 'folke/sidekick.nvim' },
   { 'fatih/vim-go' },
   { 'theprimeagen/harpoon' },
   -- { 'github/copilot.vim' },
