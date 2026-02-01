@@ -23,7 +23,7 @@ require('lazy').setup({
   { 'fatih/vim-go' },
   { 'theprimeagen/harpoon' },
   -- { 'github/copilot.vim' },
-  { 'zbirenbaum/copilot.lua' },
+  -- { 'zbirenbaum/copilot.lua' },
   { 'mbbill/undotree' },
   { 'vim-test/vim-test' },
   { 'folke/which-key.nvim',  opts = {} },

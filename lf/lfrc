@@ -18,8 +18,8 @@ set icons true
 cmd open ${{
   case $(file --mime-type "$f" -bL) in text/*|application/json) $EDITOR "$fx";;
     application/pdf) mpv "$f" >/dev/null 2>&1 & ;;
-    video/*) ffplay "$f" >/dev/null 2>&1 ;;
-    audio/*) ffplay "$f" >/dev/null 2>&1 ;;
+    video/*) mpv "$f" >/dev/null 2>&1 ;;
+    audio/*) mpv --no-video "$f" >/dev/null 2>&1 ;;
     image/svg+xml) open "$f" && echo "Press Enter to continue" && read ;;
     image/*) viu "$f" && echo "Press Enter to continue" && read ;;
     *) for f in "$fx"; do open "$f" >/dev/null 2>/dev/null & done;;
