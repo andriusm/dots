@@ -9,6 +9,10 @@ if [[ -f $HOME/.config/work_zsh_constants ]]; then
   . $HOME/.config/work_zsh_constants
 fi
 
+if [[ -f $HOME/.config/pers_zsh_constants ]]; then
+  . $HOME/.config/pers_zsh_constants
+fi
+
 source $ZDOTDIR/constants
 source $ZDOTDIR/aliases
 source $ZDOTDIR/functions
