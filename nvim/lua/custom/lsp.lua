@@ -1,9 +1,8 @@
 local function init_my_lsp()
     local lsp_file = "learnlsp"
 
-    local exit_code = os.execute("which " .. lsp_file)
-
-    if not (exit_code == 0) then
+    local ok = os.execute("which " .. lsp_file)
+    if ok ~= 0 and ok ~= true then
         return
     end
 
