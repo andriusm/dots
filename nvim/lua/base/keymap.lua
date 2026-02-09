@@ -20,8 +20,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+--vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- older keymap
 
@@ -70,8 +70,8 @@ vim.keymap.set("n", "gf", ":edit <cfile><cr>")
 
 vim.keymap.set("n", "<leader>vr", ":source $HOME/.config/nvim/init.lua<cr>")
 
-vim.keymap.set("n", "<leader>k", ":nohlsearch<CR>")
-vim.keymap.set("n", "<leader>q", ":bdelete<CR>")
+vim.keymap.set("n", "<leader>hk", ":nohlsearch<CR>", { desc = 'Clear search highlight' })
+vim.keymap.set("n", "<leader>q", ":bdelete<CR>", { desc = 'Delete buffer' })
 
 vim.keymap.set("n", "<leader>T", ":vsplit | terminal<CR>i")
 
@@ -116,7 +116,7 @@ if has_harpoon then
   local ui = require('harpoon.ui')
 
   vim.keymap.set("n", "<leader>a", mark.add_file)
-  vim.keymap.set("n", "<leader>e", ui.toggle_quick_menu)
+  vim.keymap.set("n", "<leader>e", ui.toggle_quick_menu, { desc = 'Harpoon: toggle quick menu' })
   vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end)
   vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end)
   vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end)
@@ -224,9 +224,9 @@ vim.keymap.set("n", "<space>z",  function()
   require('toolbox.utils').create_modal_window(output)
 end)
 
--- quickfix
-vim.keymap.set("n", "<leader>j", ":cnext<CR>")
-vim.keymap.set("n", "<leader>k", ":cprev<CR>")
+-- quickfix (j/k = next/prev; <leader>hk = nohlsearch to avoid conflict)
+vim.keymap.set("n", "<leader>j", ":cnext<CR>", { desc = 'Quickfix: next' })
+vim.keymap.set("n", "<leader>k", ":cprev<CR>", { desc = 'Quickfix: previous' })
 
 -- custom
 vim.keymap.set('n', '<leader>fi', require('toolbox').file_info)
