@@ -1,6 +1,9 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
+-- Add mason bin to PATH so mason-installed LSP servers are found
+vim.env.PATH = vim.fn.stdpath('data') .. '/mason/bin:' .. vim.env.PATH
+
 -- See `:help vim.o`
 
 -- Set highlight on search
