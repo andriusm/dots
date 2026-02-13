@@ -46,7 +46,7 @@ vim.o.background = 'dark'
 vim.o.foldmethod = 'expr'
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 20
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 vim.opt.colorcolumn = '120'
 vim.opt.textwidth = 120
