@@ -6,7 +6,7 @@ return {
 		local function refresh_branch()
 			vim.system({ 'git', 'rev-parse', '--abbrev-ref', 'HEAD' }, { text = true }, function(result)
 				if result.code == 0 then
-					cached_branch = vim.trim(result.stdout)
+					cached_branch = '[' .. vim.trim(result.stdout) .. ']'
 				else
 					cached_branch = ''
 				end
@@ -30,9 +30,7 @@ return {
 				lualine_a = { 'mode' },
 				lualine_b = {
 					{
-						function()
-							return vim.fn.fnamemodify(vim.fn.getcwd(), ':~')
-						end,
+						'getcwd',
 					},
 					{
 						function()
