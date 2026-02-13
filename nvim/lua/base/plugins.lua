@@ -28,7 +28,6 @@ require('lazy').setup({
   { 'vim-test/vim-test' },
   { 'folke/which-key.nvim',  opts = {} },
   { 'numToStr/Comment.nvim', opts = {} },
-  { 'nvim-treesitter/playground' },
   { 'theHamsta/nvim-dap-virtual-text' },
   { 'nvim-telescope/telescope-dap.nvim' },
 }, {})

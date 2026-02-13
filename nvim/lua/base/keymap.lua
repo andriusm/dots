@@ -110,24 +110,18 @@ end
 
 -- harpoon plugin
 
-local has_harpoon, _ = pcall(require, "harpoon")
-if has_harpoon then
-  local mark = require('harpoon.mark')
-  local ui = require('harpoon.ui')
-
-  vim.keymap.set("n", "<leader>a", mark.add_file)
-  vim.keymap.set("n", "<leader>e", ui.toggle_quick_menu, { desc = 'Harpoon: toggle quick menu' })
-  vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end)
-  vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end)
-  vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end)
-  vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end)
-  vim.keymap.set("n", "<leader>5", function() ui.nav_file(5) end)
-  vim.keymap.set("n", "<leader>6", function() ui.nav_file(6) end)
-  vim.keymap.set("n", "<leader>7", function() ui.nav_file(7) end)
-  vim.keymap.set("n", "<leader>8", function() ui.nav_file(8) end)
-  vim.keymap.set("n", "<leader>9", function() ui.nav_file(9) end)
-  vim.keymap.set("n", "<leader>0", function() ui.nav_file(0) end)
-end
+vim.keymap.set("n", "<leader>a", function() require('harpoon.mark').add_file() end)
+vim.keymap.set("n", "<leader>e", function() require('harpoon.ui').toggle_quick_menu() end, { desc = 'Harpoon: toggle quick menu' })
+vim.keymap.set("n", "<leader>1", function() require('harpoon.ui').nav_file(1) end)
+vim.keymap.set("n", "<leader>2", function() require('harpoon.ui').nav_file(2) end)
+vim.keymap.set("n", "<leader>3", function() require('harpoon.ui').nav_file(3) end)
+vim.keymap.set("n", "<leader>4", function() require('harpoon.ui').nav_file(4) end)
+vim.keymap.set("n", "<leader>5", function() require('harpoon.ui').nav_file(5) end)
+vim.keymap.set("n", "<leader>6", function() require('harpoon.ui').nav_file(6) end)
+vim.keymap.set("n", "<leader>7", function() require('harpoon.ui').nav_file(7) end)
+vim.keymap.set("n", "<leader>8", function() require('harpoon.ui').nav_file(8) end)
+vim.keymap.set("n", "<leader>9", function() require('harpoon.ui').nav_file(9) end)
+vim.keymap.set("n", "<leader>0", function() require('harpoon.ui').nav_file(0) end)
 
 -- undotree plugin
 
@@ -147,14 +141,11 @@ end
 
 -- debugging
 
-local has_dap, _ = pcall(require, "dap")
-if has_dap then
-  vim.keymap.set("n", "<F5>", "<cmd>lua require('dap').continue()<cr>")
-  vim.keymap.set("n", "<F7>", "<cmd>lua require('dap').step_into()<cr>")
-  vim.keymap.set("n", "<F8>", "<cmd>lua require('dap').step_over()<cr>")
-  vim.keymap.set("n", "<F9>", "<cmd>lua require('dap').toggle_breakpoint()<cr>")
-  vim.keymap.set("n", "<F12>", "<cmd>lua require('dap').repl.toggle()<cr>")
-end
+vim.keymap.set("n", "<F5>", function() require('dap').continue() end)
+vim.keymap.set("n", "<F7>", function() require('dap').step_into() end)
+vim.keymap.set("n", "<F8>", function() require('dap').step_over() end)
+vim.keymap.set("n", "<F9>", function() require('dap').toggle_breakpoint() end)
+vim.keymap.set("n", "<F12>", function() require('dap').repl.toggle() end)
 
 -- telescope
 vim.keymap.set('n', '<leader>sf', function() require('telescope.builtin').find_files() end, { desc = '[S]earch [F]iles' })
