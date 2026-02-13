@@ -18,8 +18,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = 'Go to next diagnostic message' })
 --vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
@@ -157,21 +157,21 @@ if has_dap then
 end
 
 -- telescope
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sj', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set('n', '<leader>sf', function() require('telescope.builtin').find_files() end, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sg', function() require('telescope.builtin').live_grep() end, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sj', function() require('telescope.builtin').git_files() end, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sw', function()
   local current_word = vim.fn.expand("<cword>")
   require('telescope.builtin').live_grep({ default_text = current_word })
 end)
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]resume' })
+vim.keymap.set('n', '<leader>sh', function() require('telescope.builtin').help_tags() end, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sd', function() require('telescope.builtin').diagnostics() end, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sr', function() require('telescope.builtin').resume() end, { desc = '[S]earch [R]resume' })
 
-vim.keymap.set("n", "<leader>b", require('telescope.builtin').buffers)
-vim.keymap.set("n", "<leader>rc", require('telescope.builtin').oldfiles)
-vim.keymap.set("n", "<leader>o", require('telescope.builtin').lsp_document_symbols)
-vim.keymap.set("n", "<leader>fc", require('telescope.builtin').commands)
+vim.keymap.set("n", "<leader>b", function() require('telescope.builtin').buffers() end)
+vim.keymap.set("n", "<leader>rc", function() require('telescope.builtin').oldfiles() end)
+vim.keymap.set("n", "<leader>o", function() require('telescope.builtin').lsp_document_symbols() end)
+vim.keymap.set("n", "<leader>fc", function() require('telescope.builtin').commands() end)
 
 vim.keymap.set("n", "<leader>vv", function()
   require('telescope.builtin').find_files({
@@ -180,8 +180,8 @@ vim.keymap.set("n", "<leader>vv", function()
   })
 end)
 
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>?', function() require('telescope.builtin').oldfiles() end, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader><space>', function() require('telescope.builtin').buffers() end, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -229,7 +229,7 @@ vim.keymap.set("n", "<leader>j", ":cnext<CR>", { desc = 'Quickfix: next' })
 vim.keymap.set("n", "<leader>k", ":cprev<CR>", { desc = 'Quickfix: previous' })
 
 -- custom
-vim.keymap.set('n', '<leader>fi', require('toolbox').file_info)
+vim.keymap.set('n', '<leader>fi', function() require('toolbox').file_info() end)
 
 vim.keymap.set('v', '<leader>xd', ':lua decode_base64_selection()<CR>')
 vim.keymap.set('v', '<leader>xe', ':lua encode_base64_selection()<CR>')
@@ -242,7 +242,7 @@ vim.keymap.set("n", "<leader>xc", function()
     vim.o.background = "dark"
   end
 end)
-vim.keymap.set("n", "<leader>xo", require('toolbox.git').find_pr_of_current_line)
+vim.keymap.set("n", "<leader>xo", function() require('toolbox.git').find_pr_of_current_line() end)
 
 vim.keymap.set("n", "<localleader>w", '<cmd>ExecuteHttpRequest<CR>')
 vim.keymap.set("n", "<leader>xl", "<cmd>lua OpenKibanaLogs()<CR>")

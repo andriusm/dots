@@ -15,6 +15,6 @@ require('custom.adoc')
 require('custom.utils')
 require('custom.experiments')
 
-if vim.loop.fs_stat(vim.fn.expand("~/.config/nvim/lua/custom/work.lua")) then
+if vim.uv.fs_stat(vim.fn.expand("~/.config/nvim/lua/custom/work.lua")) then
 	require('custom.work')
 end
