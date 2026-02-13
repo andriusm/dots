@@ -157,17 +157,18 @@ function M.execute_http_request()
     curl_cmd = string.format('curl -s -X %s %s', http_verb, url)
   end
 
-  -- Execute curl command
-  local handle = io.popen(curl_cmd)
-  local response = handle:read("*a")
-  handle:close()
+  -- Execute curl command (async)
+  vim.system({ 'sh', '-c', curl_cmd }, { text = true }, function(result)
+    vim.schedule(function()
+      local response = result.stdout or ''
+      if response:sub(-1) == "\n" then
+        response = response:sub(1, -2)
+      end
 
-  if response:sub(-1) == "\n" then
-    response = response:sub(1, -2)
-  end
-
-  local response_lines = vim.split(response, '\n')
-  vim.api.nvim_buf_set_lines(bufnr, end_line + 1, end_line + #response_lines + 1, false, response_lines)
+      local response_lines = vim.split(response, '\n')
+      vim.api.nvim_buf_set_lines(bufnr, end_line + 1, end_line + #response_lines + 1, false, response_lines)
+    end)
+  end)
   --
   -- use this to add new lines, instead of replacing
   -- vim.api.nvim_buf_set_lines(bufnr, end_line + 1, end_line + #response_lines, false, response_lines)

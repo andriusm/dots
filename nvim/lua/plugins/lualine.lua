@@ -15,7 +15,7 @@ return {
 
 		refresh_branch()
 
-		vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'DirChanged' }, {
+		vim.api.nvim_create_autocmd({ 'FocusGained', 'DirChanged' }, {
 			callback = refresh_branch,
 		})
 
