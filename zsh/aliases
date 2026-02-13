@@ -84,3 +84,4 @@ alias ja='env -u LOG_LEVEL jiratui ui -p SECURITY --search-on-startup -j 1'
 # alias ji='env -u LOG_LEVEL jira issue list --created month -a$(jira me)'
 
 # alias j='sel=$(find $HOME/vinted -mindepth 1 -maxdepth 1 -type d | rev | cut -d '/' -f1 | rev | fzf) && cd "$HOME/vinted/$sel"'
+alias cov="go test -coverprofile=coverage.out ./... && go tool cover -func=coverage.out | grep total | awk '{print $3}'"
