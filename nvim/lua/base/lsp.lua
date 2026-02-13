@@ -64,9 +64,4 @@ vim.lsp.config('ruby_lsp', {
   cmd = { 'mise', 'exec', '--', 'ruby-lsp' },
 })
 
-local mason_lspconfig = require('mason-lspconfig')
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
-  automatic_enable = { 'lua_ls', 'vimls', 'gopls' },
-}
-vim.lsp.enable('ruby_lsp')
+vim.lsp.enable({ 'lua_ls', 'vimls', 'gopls', 'ruby_lsp' })
