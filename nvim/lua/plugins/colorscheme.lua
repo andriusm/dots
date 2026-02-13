@@ -1,9 +1,10 @@
 return {
 	{
-		'sainnhe/everforest',
+		'neanias/everforest-nvim',
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme 'everforest'
+			require('everforest').setup({})
+			require('everforest').load()
 		end,
 	},
 }
