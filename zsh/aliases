@@ -62,7 +62,6 @@ alias ggpull='git pull origin $(current_branch)'
 alias ggpur='git pull --rebase origin $(current_branch)'
 alias ggpush='git push origin $(current_branch)'
 alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
-alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gam='git commit -a --amend --no-edit'
 alias gbr="git for-each-ref --sort=committerdate refs/heads/"
 
