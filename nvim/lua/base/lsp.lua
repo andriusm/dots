@@ -64,4 +64,25 @@ vim.lsp.config('ruby_lsp', {
   cmd = { 'mise', 'exec', '--', 'ruby-lsp' },
 })
 
-vim.lsp.enable({ 'lua_ls', 'vimls', 'gopls', 'ruby_lsp' })
+vim.lsp.config('eslint', {
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+vim.lsp.config('ts_ls', {
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+vim.lsp.config('html', {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  init_options = {
+    embeddedLanguages = {
+      css = true,
+      javascript = true,
+    },
+  },
+})
+
+vim.lsp.enable({ 'lua_ls', 'vimls', 'gopls', 'ruby_lsp', 'eslint', 'ts_ls', 'html' })

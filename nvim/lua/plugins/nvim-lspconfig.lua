@@ -27,7 +27,7 @@ return {
 		cmd = { 'LspInstall', 'LspUninstall' },
 		dependencies = { 'williamboman/mason.nvim' },
 		opts = {
-			ensure_installed = { 'lua_ls', 'vimls', 'gopls' },
+			ensure_installed = { 'lua_ls', 'vimls', 'gopls', 'ts_ls', 'html', 'eslint' },
 		},
 	},
 }
