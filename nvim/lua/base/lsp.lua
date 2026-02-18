@@ -85,4 +85,9 @@ vim.lsp.config('html', {
   },
 })
 
-vim.lsp.enable({ 'lua_ls', 'vimls', 'gopls', 'ruby_lsp', 'eslint', 'ts_ls', 'html' })
+vim.lsp.config('clangd', {
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+vim.lsp.enable({ 'lua_ls', 'vimls', 'gopls', 'ruby_lsp', 'eslint', 'ts_ls', 'html', 'clangd' })
