@@ -5,12 +5,8 @@ return {
 		lazy = false,
 		build = ':TSUpdate',
 		config = function()
-			local installed = {}
-			for _, f in ipairs(vim.api.nvim_get_runtime_file('parser/*.so', true)) do
-				installed[vim.fn.fnamemodify(f, ':t:r')] = true
-			end
 			local to_install = vim.tbl_filter(function(lang)
-				return not installed[lang]
+				return not pcall(vim.treesitter.language.add, lang)
 			end, { 'go', 'lua' })
 			if #to_install > 0 then
 				require('nvim-treesitter').install(to_install)
