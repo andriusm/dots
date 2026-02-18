@@ -34,49 +34,29 @@ local on_attach = function(client, buffer)
   end, { desc = 'Format current buffer with LSP' })
 end
 
-local servers = {
-  gopls = {},
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-  lua_ls = {
+vim.lsp.config('*', {
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+vim.lsp.config('lua_ls', {
+  settings = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
     },
   },
-}
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-for server_name, server_opts in pairs(servers) do
-  vim.lsp.config(server_name, {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    settings = server_opts,
-    filetypes = server_opts.filetypes,
-  })
-end
+})
 
 --   mise use ruby@3.3.1 && gem install ruby-lsp   (repeat for each version you use)
 vim.lsp.config('ruby_lsp', {
-  capabilities = capabilities,
-  on_attach = on_attach,
   cmd = { 'mise', 'exec', '--', 'ruby-lsp' },
 })
 
-vim.lsp.config('eslint', {
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
-
-vim.lsp.config('ts_ls', {
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
-
 vim.lsp.config('html', {
-  capabilities = capabilities,
-  on_attach = on_attach,
   init_options = {
     embeddedLanguages = {
       css = true,
@@ -85,9 +65,4 @@ vim.lsp.config('html', {
   },
 })
 
-vim.lsp.config('clangd', {
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
-
-vim.lsp.enable({ 'lua_ls', 'vimls', 'gopls', 'ruby_lsp', 'eslint', 'ts_ls', 'html', 'clangd' })
+vim.lsp.enable({ 'lua_ls', 'vimls', 'gopls', 'ruby_lsp', 'eslint', 'ts_ls', 'html', 'clangd', 'bashls' })
