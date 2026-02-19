@@ -72,4 +72,4 @@ vim.lsp.config('html', {
   },
 })
 
-vim.lsp.enable({ 'lua_ls', 'vimls', 'gopls', 'ruby_lsp', 'eslint', 'ts_ls', 'html', 'clangd', 'bashls', 'groovyls', 'regols', 'dockerls', 'sqlls', 'jsonnet_ls' })
+vim.lsp.enable({ 'lua_ls', 'vimls', 'gopls', 'ruby_lsp', 'eslint', 'ts_ls', 'html', 'clangd', 'bashls', 'groovyls', 'regols', 'dockerls', 'sqlls', 'jsonnet_ls', 'yamlls' })
