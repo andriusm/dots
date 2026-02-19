@@ -56,6 +56,13 @@ vim.lsp.config('ruby_lsp', {
   cmd = { 'mise', 'exec', '--', 'ruby-lsp' },
 })
 
+vim.lsp.config('groovyls', {
+  cmd = {
+    'java', '-jar',
+    vim.fn.stdpath('data') .. '/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar',
+  },
+})
+
 vim.lsp.config('html', {
   init_options = {
     embeddedLanguages = {
@@ -65,4 +72,4 @@ vim.lsp.config('html', {
   },
 })
 
-vim.lsp.enable({ 'lua_ls', 'vimls', 'gopls', 'ruby_lsp', 'eslint', 'ts_ls', 'html', 'clangd', 'bashls' })
+vim.lsp.enable({ 'lua_ls', 'vimls', 'gopls', 'ruby_lsp', 'eslint', 'ts_ls', 'html', 'clangd', 'bashls', 'groovyls', 'regols', 'dockerls', 'sqlls', 'jsonnet_ls' })
