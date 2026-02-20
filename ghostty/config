@@ -43,7 +43,7 @@ unfocused-split-opacity = 0.7
 #theme = Builtin Solarized Light
 #theme = Desert
 #theme = GruvboxDark
-theme = nord
+theme = Nord
 #theme = PencilDark
 
 cursor-color = #ff0078
