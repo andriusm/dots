@@ -11,6 +11,5 @@ function AltGoFile()
         cfile = string.gsub(cfile, ".go$", "_test.go")
     end
 
-    print(cfile)
     vim.cmd(":edit " .. cfile)
 end

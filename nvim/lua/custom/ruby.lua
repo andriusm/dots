@@ -91,7 +91,7 @@ function PackwerkCheck()
     local ns_id = vim.api.nvim_create_namespace('my_plugin_annotation')
     vim.api.nvim_buf_clear_namespace(0, ns_id, 0, -1)
 
-    local output = vim.fn.systemlist({ "/Users/andrius/.cargo/bin/pks", "check" })
+    local output = vim.fn.systemlist({ vim.fn.expand("~/.cargo/bin/pks"), "check" })
 
     local line = output[1]
     if line == "No violations detected!" then

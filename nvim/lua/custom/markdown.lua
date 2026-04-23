@@ -1,8 +1,5 @@
 local M = {}
 
-vim.wo.colorcolumn = "80"
-vim.o.textwidth = 80
-
 function M.follow_link()
     local _, col = unpack(vim.api.nvim_win_get_cursor(0))
 
@@ -39,7 +36,6 @@ function M.follow_link()
     end
 
     local link = line:sub(left_bracket + 1, right_bracket - 1)
-    -- print(link)
     if #link == 0 then
         print("No link found")
         return
@@ -52,8 +48,10 @@ end
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
-    callback = function()
-        vim.keymap.set('n', '<leader>xf', M.follow_link)
+    callback = function(event)
+        vim.bo[event.buf].textwidth = 80
+        vim.wo[0].colorcolumn = "80"
+        vim.keymap.set('n', '<leader>xf', M.follow_link, { buffer = event.buf })
     end
 })
 
