@@ -27,7 +27,6 @@ require('lazy').setup({
   { 'mbbill/undotree' },
   { 'vim-test/vim-test' },
   { 'folke/which-key.nvim',  opts = {} },
-  { 'numToStr/Comment.nvim', opts = {} },
   { 'theHamsta/nvim-dap-virtual-text' },
   { 'nvim-telescope/telescope-dap.nvim' },
 }, {})
