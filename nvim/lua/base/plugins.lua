@@ -22,8 +22,6 @@ require('lazy').setup({
   { 'folke/sidekick.nvim' },
   { 'fatih/vim-go' },
   { 'theprimeagen/harpoon' },
-  -- { 'github/copilot.vim' },
-  -- { 'zbirenbaum/copilot.lua' },
   { 'mbbill/undotree' },
   { 'vim-test/vim-test' },
   { 'folke/which-key.nvim',  opts = {} },

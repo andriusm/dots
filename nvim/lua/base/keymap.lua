@@ -78,28 +78,6 @@ vim.keymap.set("n", "<leader>T", ":vsplit | terminal<CR>i")
 -- fm-nvim
 --vim.keymap.set("n", "-", ":Lf<CR>")
 
--- copilot
-vim.keymap.set("i", "<C-p>", "<cmd>call copilot#Previous()<cr>")
-vim.keymap.set("i", "<C-n>", "<cmd>call copilot#Next()<cr>")
-vim.keymap.set("i", "<C-Bslash>", "<cmd>call copilot#Suggest()<cr>")
-vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-line)')
-vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
-  expr = true,
-  replace_keycodes = false
-})
-vim.g.copilot_no_tab_map = true
-
-vim.api.nvim_set_hl(0, 'CopilotSuggestion', {
-  bg = '#dddd33',
-  fg = '#333333',
-  ctermfg = 8,
-})
-
--- copilot plugin
-if vim.fn.exists(":Copilot") == 2 then
-  vim.keymap.set("n", "<leader>ce", ":Copilot enable<cr>")
-  vim.keymap.set("n", "<leader>cd", ":Copilot disable<cr>")
-end
 
 -- git plugin
 if vim.fn.exists(":G") == 2 then
