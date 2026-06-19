@@ -7,6 +7,7 @@
 [alias]
 	fap = fetch --all --prune
 	pom = "!f() { b=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's@^origin/@@'); [ -z \"$b\" ] && b=$(git remote show origin | sed -n 's/.*HEAD branch: //p'); git pull origin \"$b\" \"$@\"; }; f"
+	dm = "!f() { b=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's@^origin/@@'); [ -z \"$b\" ] && b=$(git remote show origin | sed -n 's/.*HEAD branch: //p'); git diff \"$b\" \"$@\"; }; f"
 
 	wta = worktree add
 	wtr = worktree remove
