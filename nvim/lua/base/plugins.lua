@@ -15,6 +15,7 @@ require('lazy').setup({
   { import = "plugins" },
 
   { 'andriusm/toolbox.nvim' },
+  { 'andriusm/nvim-avro' },
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-rhubarb' },
   { 'tpope/vim-sleuth' },

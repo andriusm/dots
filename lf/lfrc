@@ -78,7 +78,7 @@ map ff $fzf | xargs sh -c 'nvim "$@" < /dev/tty' nvim
 #map t $A=`echo -e "asdf\nqwre" | topmenu`; notify-send "$A"
 
 map gw cd ~/work/projects
-map gs cd ~/Sync
+map gs cd ~/1_main/Sync
 map gd cd ~/Downloads
 map gl cd ~/.config/lf
 

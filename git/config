@@ -1,12 +1,12 @@
 [user]
 	name = Andrius Miasnikovas
 	email = andriusms@gmail.com
-	signingkey = 0137C485
+	signingkey = AC73D3D52E2415A2
 [color]
 	ui = auto
 [alias]
 	fap = fetch --all --prune
-	pom = pull origin master
+	pom = "!f() { b=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's@^origin/@@'); [ -z \"$b\" ] && b=$(git remote show origin | sed -n 's/.*HEAD branch: //p'); git pull origin \"$b\" \"$@\"; }; f"
 
 	wta = worktree add
 	wtr = worktree remove
@@ -17,7 +17,7 @@
 	br = branch
 	co = checkout
 	amend = commit --amend
-	nsm = diff --name-status master
+	nsm = "!f() { b=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's@^origin/@@'); [ -z \"$b\" ] && b=$(git remote show origin | sed -n 's/.*HEAD branch: //p'); git diff --name-status \"$b\" \"$@\"; }; f"
 
 	st = status
 	s = status --short --untracked-files
@@ -94,3 +94,9 @@
 # vim:ft=gitconfig
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[init]
+	defaultBranch = master

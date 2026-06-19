@@ -4,5 +4,6 @@ zsh/.zsh_history
 zsh/.zcompdump
 zsh/.zcompcache
 zsh/.zsh_sessions
+zsh/.zcompdump.*
 btop/btop.log
 newsboat/cache.db
