@@ -28,4 +28,5 @@ require('lazy').setup({
   { 'folke/which-key.nvim',  opts = {} },
   { 'theHamsta/nvim-dap-virtual-text' },
   { 'nvim-telescope/telescope-dap.nvim' },
+  { "immanuwell/droast.nvim" },
 }, {})
