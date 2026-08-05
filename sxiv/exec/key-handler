@@ -1,0 +1,56 @@
+#!/bin/sh
+
+while read file
+do
+  fullpath="$(pwd)/$file"
+  target="$HOME/chosen"
+
+  case "$1" in
+  "c")
+      notify-send -t 3000 "copying $file"
+      mkdir -p $target
+      cp "$file" "$target"
+  ;;
+  "t")
+      notify-send -t 3000 "trashing $file"
+      mv "$file" /run/media/andrius/archive/trash
+  ;;
+  "d")
+      notify-send -t 3000 "trashing $file"
+      mv "$file" /run/media/andrius/nvme-data/trash
+  ;;
+  "p")
+      mv "$file" /run/media/andrius/nvme-data/pics/papers/
+  ;;
+  "s")
+      mv "$file" /run/media/andrius/nvme-data/pics/statybos/
+  ;;
+  "w")
+      mv "$file" /run/media/andrius/nvme-data/pics/work/
+  ;;
+  "o")
+      mv "$file" /run/media/andrius/nvme-data/pics/other/
+  ;;
+  "g")
+      mv "$file" /run/media/andrius/nvme-data/pics/drawings/
+  ;;
+  "f")
+      mv "$file" /run/media/andrius/nvme-data/pics/food/
+  ;;
+  "b")
+      rm "$file"
+  ;;
+  "r")
+      TDIR="/tmp/photos-`date +'%Y-%m-%d'`"
+      mkdir -p "$TDIR"
+      fname=`echo $file | rev | cut -d '/' -f 1 | rev`
+      convert -strip -resize "50%" "$file" "$TDIR/$fname"
+  ;;
+  "k")
+      notify-send -t 10000 info "$fullpath"
+  ;;
+  "i")
+      notify-send -t 10000 info "`exiv2 $file | sed -E \"s/$/\r/gi\"`"
+  ;;
+  esac
+done
