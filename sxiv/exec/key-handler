@@ -2,7 +2,7 @@
 
 while read file
 do
-  fullpath="$(pwd)/$file"
+  fullpath="$(pwd)\n$(du -sh $file)"
   target="$HOME/chosen"
 
   case "$1" in
@@ -37,9 +37,9 @@ do
   "f")
       mv "$file" /run/media/andrius/nvme-data/pics/food/
   ;;
-  "b")
-      rm "$file"
-  ;;
+  # "b")
+  #     rm "$file"
+  # ;;
   "r")
       TDIR="/tmp/photos-`date +'%Y-%m-%d'`"
       mkdir -p "$TDIR"
