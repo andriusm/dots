@@ -9,3 +9,4 @@ newsboat/cache.db
 localnotes/
 **/.claude/settings.local.json
 localnotes
+memory/

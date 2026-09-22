@@ -35,7 +35,7 @@ keys = {
     mods = 'SHIFT|ALT',
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
   },
-  { key = 'a', mods = 'ALT', action = wezterm.action.PaneSelect },
+  -- { key = 'a', mods = 'ALT', action = wezterm.action.PaneSelect },
   {
     key = 'h',
     mods = 'ALT',

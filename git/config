@@ -1,7 +1,7 @@
 [user]
 	name = Andrius Miasnikovas
 	email = andriusms@gmail.com
-	signingkey = AC73D3D52E2415A2
+	signingkey = 7D31B296B16FE636
 [color]
 	ui = auto
 [alias]
@@ -31,7 +31,8 @@
 	dc = diff --cached
 	ds = diff --stat=160,120
 	dh1 = diff HEAD~1
-	l = log --graph --abbrev-commit --date=relative
+	; l = log --graph --abbrev-commit --date=relative
+	l = log --pretty=format:'%C(yellow)%h%Creset %C(green)%G?%Creset %C(blue)%aN%Creset %s %C(dim)%cr%Creset'
 	head = !git l -1
 	h = !git head
 	la = !git l --all
@@ -70,8 +71,8 @@
 [gpg]
 	program = gpg
 
-; [url "git@github.com:"]
-; 	insteadOf = https://github.com/
+[url "git@github.com:"]
+	insteadOf = https://github.com/
 
 [pull]
 	ff = only
@@ -92,12 +93,11 @@
 [http]
 	sslCAinfo = /etc/ssl/certs/ca-certificates.crt
 
-# vim:ft=gitconfig
-[url "git@github.com:"]
-	insteadOf = https://github.com/
 [commit]
-	; gpgsign = true
+	gpgsign = true
 [tag]
-	; gpgsign = true
+	gpgsign = true
 [init]
 	defaultBranch = master
+
+# vim:ft=gitconfig
