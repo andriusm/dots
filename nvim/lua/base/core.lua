@@ -1,8 +1,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
--- Add mason bin to PATH so mason-installed LSP servers are found
-vim.env.PATH = vim.fn.stdpath('data') .. '/mason/bin:' .. vim.env.PATH
+-- Add mason bin to PATH so mason-installed LSP servers are found.
+-- Appended (not prepended) so mise shims win for project-pinned tools;
+-- unpinned shims fall through to mason/bin (mise not_found_system_fallback).
+vim.env.PATH = vim.env.PATH .. ':' .. vim.fn.stdpath('data') .. '/mason/bin'
 
 -- See `:help vim.o`
 
