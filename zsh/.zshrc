@@ -154,6 +154,11 @@ fi
 # path
 # --------------------------------------------------------------------------------
 
+if [ -d "$HOME/.local/share/nvim/mason/bin/" ]; then
+  export PATH="$HOME/.local/share/nvim/mason/bin/:$PATH" 
+fi
+
+
 export PATH="$HOME/1_main/bin:$HOME/bin:$HOME/bin/ext:$HOME/bin/wrk:$HOME/bin/sonar:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 if [ -d "$HOME/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.1.0-2026-03-09-6a872a80b/bin" ]; then

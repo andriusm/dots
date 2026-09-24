@@ -9,7 +9,7 @@ vim.filetype.add({
 return {
   {
     'mfussenegger/nvim-lint',
-    event = { 'BufReadPost', 'BufWritePost', 'InsertLeave' },
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require('lint')
 
@@ -21,7 +21,11 @@ return {
         dockerfile = { 'hadolint' },
         gitcommit = { 'gitlint' },
         markdown = { 'markdownlint-cli2' },
+        sql = { 'sqruff' },
       }
+
+      -- Linters run on every buffer regardless of filetype.
+      local global_linters = { 'gitleaks' }
 
       -- Spectral: use project ruleset when present, else the global fallback.
       local spectral = require('lint.linters.spectral')
@@ -37,6 +41,16 @@ return {
         return spectral
       end
 
+      -- Sqruff only reads .sqruff from its exact cwd, so resolve the config
+      -- ourselves: project .sqruff (upward from the buffer) or the home fallback.
+      local sqruff = require('lint.linters.sqruff')
+      lint.linters.sqruff = function()
+        local config = vim.fs.find('.sqruff', { upward = true, path = vim.fn.expand('%:p:h') })[1]
+          or vim.fn.expand('~/.config/sqruff/.sqruff')
+        sqruff.args = { 'lint', '--config', config, '--format=json', '-' }
+        return sqruff
+      end
+
       -- Install all configured linters via Mason if missing.
       -- Keys are nvim-lint names, values are Mason package names where they differ.
       local mason_names = {
@@ -46,7 +60,7 @@ return {
         require('mason')
         local registry = require('mason-registry')
         local seen = {}
-        for _, linters in pairs(lint.linters_by_ft) do
+        for _, linters in pairs(vim.list_extend({ global_linters }, vim.tbl_values(lint.linters_by_ft))) do
           for _, linter in ipairs(linters) do
             local name = mason_names[linter] or linter
             if not seen[name] then
@@ -65,6 +79,9 @@ return {
         group = vim.api.nvim_create_augroup('nvim-lint', { clear = true }),
         callback = function()
           lint.try_lint(nil, { ignore_errors = true })
+          for _, linter in ipairs(global_linters) do
+            lint.try_lint(linter, { ignore_errors = true })
+          end
         end,
       })
     end,
