@@ -13,3 +13,5 @@ export PROPAGATE_DEVELOPMENT_EXCEPTIONS=false
 export GIT_EDITOR=nvim
 export EDITOR=nvim
 export PAGER=less
+
+export FZF_DEFAULT_OPTS="--bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down"
