@@ -1,0 +1,6 @@
+id: cmd-no-types
+message: "Type declaration not allowed in cmd/ — move to internal/"
+severity: error
+language: go
+rule:
+  kind: type_declaration

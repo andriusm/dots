@@ -1,0 +1,9 @@
+id: method-passthrough
+language: go
+severity: warning
+message: "Thin method: pure pass-through delegating to a single call"
+rule:
+  pattern: |-
+    func ($_ $_) $_($$$) $$$ {
+      return $_.$_($$$)
+    }

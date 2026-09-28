@@ -1,0 +1,13 @@
+id: method-error-wrap-passthrough
+language: go
+severity: warning
+message: "Thin method: single call with error wrapping adds no real value"
+rule:
+  pattern: |-
+    func ($_ $_) $_($$$) $$$ {
+      $_, err := $_.$_($$$)
+      if err != nil {
+        return $$$
+      }
+      return $$$
+    }
