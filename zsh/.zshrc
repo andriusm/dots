@@ -142,13 +142,6 @@ fi
 #   source "${DEVTOOLS_PATH:-$HOME/vinted/dev-tools}/bin/shell_function.sh"
 # fi
 
-# --------------------------------------------------------------------------------
-# mise
-# --------------------------------------------------------------------------------
-
-if command -v mise &> /dev/null; then
-  eval "$(mise activate)"
-fi
 
 # --------------------------------------------------------------------------------
 # path
@@ -158,21 +151,30 @@ if [ -d "$HOME/.local/share/nvim/mason/bin/" ]; then
   export PATH="$HOME/.local/share/nvim/mason/bin/:$PATH" 
 fi
 
-
 export PATH="$HOME/1_main/bin:$HOME/bin:$HOME/bin/ext:$HOME/bin/wrk:$HOME/bin/sonar:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 if [ -d "$HOME/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.1.0-2026-03-09-6a872a80b/bin" ]; then
   export PATH="$PATH:$HOME/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.1.0-2026-03-09-6a872a80b/bin"
 fi
 
-# zprof
-
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/andrejus/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# --------------------------------------------------------------------------------
+# mise
+# --------------------------------------------------------------------------------
+
+if command -v mise &> /dev/null; then
+  eval "$(mise activate)"
+fi
+
+# --------------------------------------------------------------------------------
 
 export GPG_TTY=$(tty)
 
 if command -v loops &> /dev/null; then
   echo "── open loops ──"; loops
 fi
+
+# zprof
