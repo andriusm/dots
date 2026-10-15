@@ -70,10 +70,6 @@
 	required = true
 [gpg]
 	program = gpg
-
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-
 [pull]
 	ff = only
 [gc]
@@ -99,5 +95,8 @@
 	gpgsign = true
 [init]
 	defaultBranch = master
+
+[url "git@github.com:vinted/"]
+	insteadOf = https://github.com/vinted/
 
 # vim:ft=gitconfig

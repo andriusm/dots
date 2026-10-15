@@ -42,6 +42,7 @@ alias rg='rg --hidden'
 alias fd='fd -ui'
 alias vim='nvim'
 alias gdu='gdu-go'
+alias gocov='go test -coverprofile=coverage.out ./... && gocovsh'
 
 alias ff='find ~/Documents -type f | fzf | nvim'
 alias ee='fzf | nvim'
