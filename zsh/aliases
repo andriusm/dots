@@ -10,80 +10,63 @@ elif [[ "$os_name" == "Linux" ]]; then
   alias open="xdg-open"
 fi
 
-alias s='cd ..'
-alias l='ls -Fh'
-alias ll='ls -lFh'
-alias la='ls -laFh'
-
-alias nn='newsboat'
-
-alias doro='timer 30m && notif "Work timer is up" "Take a break"'
-alias gpl='gh pr list'
-alias gpc='gh pr checkout'
-
-alias t='tree'
-alias less='less -r'
-alias sxiv='sxiv -frs f'
-
-alias cp='cp -i'
-alias df='df -h'
-alias free='free -m'
-alias rs='git reset --hard'
-alias ts='tailscale'
-
-alias fzf='fzf --exact'
-alias hex='printf "%x\n" $1'
-alias kdiff='kdiff3'
-alias fix='bundle exec rubocop -x `git diff-tree --no-commit-id --name-only -r origin/master..HEAD | grep -E '\.rb$' | tr "\n" \' \'`'
-alias mg='bundle exec rake db:migrate'
-alias xdocker='DOCKER_DEFAULT_PLATFORM=linux/amd64 docker'
-alias ag='ag --hidden'
-alias rg='rg --hidden'
-alias fd='fd -ui'
-alias vim='nvim'
-alias gdu='gdu-go'
-alias gocov='go test -coverprofile=coverage.out ./... && gocovsh'
-
-alias ff='find ~/Documents -type f | fzf | nvim'
-alias ee='fzf | nvim'
-alias cpv='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
-
-alias ffmpeg='ffmpeg -hide_banner'
-alias ffprobe='ffprobe -hide_banner'
-alias ffplay='ffplay -hide_banner'
+# alias j='sel=$(find $HOME/vinted -mindepth 1 -maxdepth 1 -type d | rev | cut -d '/' -f1 | rev | fzf) && cd "$HOME/vinted/$sel"'
+# alias ji='env -u LOG_LEVEL jira issue list --created month -a$(jira me)'
 
 alias 2ascii="perl -pe 's/\e\[?.*?[\@-~]//g'"
+alias ag='ag --hidden'
+alias bepr="bundle exec pronto run"
 alias cdtmp='cd `mktemp -d /tmp/experiment-XXXXXX`'
-alias tig='tig --no-merges'
-
+alias cl="git co master && git pom && git co - && git rebase master && git co master && git branch --merged|grep -v master | xargs -I % sh -c 'git branch -d %'"
 alias cnt="find . -type f | wc -l"
-alias oras='curl -s http://wttr.in/Vilnius'
-
+alias cov="go test -coverprofile=coverage.out ./... && go tool cover -func=coverage.out | grep total | awk '{print $3}'"
+alias cp='cp -i'
+alias cpv='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
+alias del-merged="git branch --merged|grep -v master | xargs -I % sh -c 'git branch -d %'"
+alias df='df -h'
+alias doro='timer 30m && notif "Work timer is up" "Take a break"'
+alias ee='fzf | nvim'
+alias fd='fd -ui'
+alias ff='find ~/Documents -type f | fzf | nvim'
+alias ffmpeg='ffmpeg -hide_banner'
+alias ffplay='ffplay -hide_banner'
+alias ffprobe='ffprobe -hide_banner'
+alias fix='bundle exec rubocop -x `git diff-tree --no-commit-id --name-only -r origin/master..HEAD | grep -E '\.rb$' | tr "\n" \' \'`'
+alias fm='mpv https://netradio.ziniur.lt/easyfm.mp3'
+alias free='free -m'
+alias fzf='fzf --exact'
+alias gam='git commit -a --amend --no-edit'
+alias gbr="git for-each-ref --sort=committerdate refs/heads/"
+alias gdu='gdu-go'
+alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
 alias ggpull='git pull origin $(current_branch)'
 alias ggpur='git pull --rebase origin $(current_branch)'
 alias ggpush='git push origin $(current_branch)'
-alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
-alias gam='git commit -a --amend --no-edit'
-alias gbr="git for-each-ref --sort=committerdate refs/heads/"
-
-alias bepr="bundle exec pronto run"
-alias memcache-reset='echo "flush_all" | nc localhost 11211'
-alias del-merged="git branch --merged|grep -v master | xargs -I % sh -c 'git branch -d %'"
-
-alias pony='ponysay -o hello'
-
-alias fm='mpv https://netradio.ziniur.lt/easyfm.mp3'
-alias cl="git co master && git pom && git co - && git rebase master && git co master && git branch --merged|grep -v master | xargs -I % sh -c 'git branch -d %'"
-
-alias pf="la | rev | cut -d ' ' -f1 | rev | grep '^\.' | grep -v '/$'"
-alias pd="la | rev | cut -d ' ' -f1 | rev | grep '^\.' | grep '/$'"
-
-alias yt="YTFZF_PREF=22 ytfzf -t"
-
+alias gocov='go test -coverprofile=coverage.out ./... && gocovsh'
+alias gpc='gh pr checkout'
+alias gpl='gh pr list'
+alias hex='printf "%x\n" $1'
 alias ja='env -u LOG_LEVEL jiratui ui -p SECURITY --search-on-startup -j 1'
-# alias ji='env -u LOG_LEVEL jira issue list --created month -a$(jira me)'
-
-# alias j='sel=$(find $HOME/vinted -mindepth 1 -maxdepth 1 -type d | rev | cut -d '/' -f1 | rev | fzf) && cd "$HOME/vinted/$sel"'
-alias cov="go test -coverprofile=coverage.out ./... && go tool cover -func=coverage.out | grep total | awk '{print $3}'"
-
+alias kdiff='kdiff3'
+alias l='ls -Fh'
+alias la='ls -laFh'
+alias less='less -r'
+alias ll='ls -lFh'
+alias memcache-reset='echo "flush_all" | nc localhost 11211'
+alias mg='bundle exec rake db:migrate'
+alias nn='newsboat'
+alias oras='curl -s http://wttr.in/Vilnius'
+alias pd="la | rev | cut -d ' ' -f1 | rev | grep '^\.' | grep '/$'"
+alias pf="la | rev | cut -d ' ' -f1 | rev | grep '^\.' | grep -v '/$'"
+alias pony='ponysay -o hello'
+alias rg='rg --hidden'
+alias rs='git reset --hard'
+alias s='cd ..'
+alias sxiv='sxiv -frs f'
+alias t='tree'
 alias ta="tmux attach"
+alias tig='tig --no-merges'
+alias ts='tailscale'
+alias vim='nvim'
+alias xdocker='DOCKER_DEFAULT_PLATFORM=linux/amd64 docker'
+alias yt="YTFZF_PREF=22 ytfzf -t"
