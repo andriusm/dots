@@ -57,6 +57,8 @@
 	ignoreCase = true
 [diff]
 	guitool = kdiff3
+; [http]
+; 	sslCAinfo = /etc/ssl/certs/ca-certificates.crt
 [merge]
 	tool = kdiff3
 	conflictstyle = diff3
@@ -86,8 +88,6 @@
 [diff]
 	colorMoved = default
 
-[http]
-	sslCAinfo = /etc/ssl/certs/ca-certificates.crt
 
 [commit]
 	gpgsign = true
