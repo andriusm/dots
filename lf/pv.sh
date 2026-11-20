@@ -16,7 +16,7 @@ case "$1" in
     *.mpg) f="`basename \"$1\"`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" -s0 >/dev/null 2>&1 && viu -w 80 -b "$o" ;;
     *.m4v) f="`basename \"$1\"`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" -s0 >/dev/null 2>&1 && viu -w 80 -b "$o" ;;
     *.avi) f="`basename \"$1\"`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" -s0 >/dev/null 2>&1 && viu -w 80 -b "$o" ;;
-    *.jpg|*.jpeg|*.png|*.gif)
+    *.jpg|*.jpeg|*.png|*.gif|*.JPG|*.JPEG|*.PNG|*.GIF)
        kitten icat --stdin no --transfer-mode stream --place "${2}x${3}@${4}x${5}" "$1" </dev/null >/dev/tty
        exit 1 ;;
     *.7z) 7z l "$1";;
