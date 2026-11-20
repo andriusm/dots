@@ -2,3 +2,13 @@
 on = "F"
 run = "plugin toggle-pane max-preview"
 desc = "Maximize or restore preview"
+
+[[mgr.prepend_keymap]]
+on = "l"
+run = "plugin zip-mount"
+desc = "Enter directory or zip archive"
+
+[[mgr.prepend_keymap]]
+on = "<Right>"
+run = "plugin zip-mount"
+desc = "Enter directory or zip archive"
