@@ -6,6 +6,7 @@ set period 1
 
 set preview true
 set previewer ~/.config/lf/pv.sh
+set cleaner ~/.config/lf/cleaner
 
 #set nopreview
 #set info size:time

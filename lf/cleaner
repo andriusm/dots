@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# echo "$(date +%T.%N) CLEAN $1 -> $6" >> /tmp/lf-debug.log
+
+kitten icat --clear --stdin no --silent --transfer-mode stream </dev/null >/dev/tty
