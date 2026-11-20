@@ -65,6 +65,7 @@ map er $derr "$f"
 
 map ei $sxiv -frs f "$f"
 map ep $mpv "$f"
+map ex $exiv2 "$f" | less
 
 map u &notify-send "$fx"
 
