@@ -43,8 +43,10 @@ unfocused-split-opacity = 0.7
 #theme = Builtin Solarized Light
 #theme = Desert
 #theme = GruvboxDark
-theme = Nord
+#theme = Nord
 #theme = PencilDark
+
+config-file = "?auto/theme.ghostty"
 
 cursor-color = #ff0078
 keybind = shift+enter=text:\x1b\r
