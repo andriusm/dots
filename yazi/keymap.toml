@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on = "F"
+run = "plugin toggle-pane max-preview"
+desc = "Maximize or restore preview"
