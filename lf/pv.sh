@@ -16,7 +16,7 @@ case "$1" in
     *.mpg) f="`basename \"$1\"`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" -s0 >/dev/null 2>&1 && viu -w 80 -b "$o" ;;
     *.m4v) f="`basename \"$1\"`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" -s0 >/dev/null 2>&1 && viu -w 80 -b "$o" ;;
     *.avi) f="`basename \"$1\"`" && o="/tmp/${f}_thumb.jpg" && ffmpegthumbnailer -i "$1" -o "$o" -s0 >/dev/null 2>&1 && viu -w 80 -b "$o" ;;
-    *.jpg|*.jpeg|*.png|*.gif|*.JPG|*.JPEG|*.PNG|*.GIF)
+    *.jpg|*.jpeg|*.png|*.gif|*.webp|*.JPG|*.JPEG|*.PNG|*.GIF|*.WEBP)
        info=$(exiv2 "$1" 2>/dev/null | grep -E '^(Image size|Camera model|Image timestamp|Exposure time|Aperture|ISO speed|Focal length) ' | grep -Ev ':[[:space:]]*$' || true)
        n=0
        [ -n "$info" ] && echo "$info" && n=$(($(echo "$info" | wc -l) + 1))
