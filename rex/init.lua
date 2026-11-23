@@ -1,0 +1,32 @@
+-- tmux
+rex.bind("alt+0", "client.tab.goto", { index = 0 })
+rex.bind("alt+1", "client.tab.goto", { index = 1 })
+rex.bind("alt+2", "client.tab.goto", { index = 2 })
+rex.bind("alt+3", "client.tab.goto", { index = 3 })
+rex.bind("alt+4", "client.tab.goto", { index = 4 })
+rex.bind("alt+5", "client.tab.goto", { index = 5 })
+rex.bind("alt+6", "client.tab.goto", { index = 6 })
+rex.bind("alt+7", "client.tab.goto", { index = 7 })
+rex.bind("alt+8", "client.tab.goto", { index = 8 })
+rex.bind("alt+9", "client.tab.goto", { index = 9 })
+rex.bind("alt+a>s", "session.switch")
+rex.bind("ctrl+f1", "pane.split", { direction = "right" })
+rex.bind("ctrl+f2", "pane.split", { direction = "down" })
+rex.bind("alt+a>alt+a", "pane.send_key", { key = "alt+a" })
+
+-- Ghostty
+rex.bind("alt+t", "client.tab.new")
+rex.bind("alt+\\", "pane.split", { direction = "right" })
+rex.bind("alt+shift+\\", "pane.split", { direction = "down" })
+rex.bind("alt+l", "pane.focus", { direction = "right" })
+rex.bind("alt+h", "pane.focus", { direction = "left" })
+rex.bind("alt+k", "pane.focus", { direction = "up" })
+rex.bind("alt+j", "pane.focus", { direction = "down" })
+rex.bind("cmd+\\", "pane.split", { direction = "right" })
+rex.bind("shift+cmd+\\", "pane.split", { direction = "down" })
+rex.bind("cmd+l", "pane.focus", { direction = "right" })
+rex.bind("cmd+k", "pane.focus", { direction = "up" })
+rex.bind("cmd+j", "pane.focus", { direction = "down" })
+
+-- Session picker, moved off cmd+k
+rex.bind("shift+cmd+k", "session.switch")
